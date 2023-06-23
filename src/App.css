@@ -1,3 +1,16 @@
+body {
+  --main-theme-color: hsl(210, 50%, 50%);
+  --main-theme-color-darken: hsl(210, 50%, 35%);
+  --link-bkg: hsl(210, 50%, 50%);
+  --bkg-color-l-7: #5b5e65;
+  --bkg-color-l-6: #42454b;
+  --bkg-color-l-5: #34373c;
+  --bkg-color-l-4: #2D2F34;
+  --bkg-color-l-3: #27292D;
+  --bkg-color-l-2: #1F2023;
+  --bkg-color-l-1: #010101;
+}
+
 .App {
   text-align: center;
 }
