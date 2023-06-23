@@ -12,6 +12,8 @@
     align-items: center;
     box-sizing: border-box;
     top: 0;
+    font-size: 30px;
+    color: #2D2F34;
 }
 
 .dropZone.visible {

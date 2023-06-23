@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react'
+import FolderZipIcon from '@mui/icons-material/FolderZip';
 import s from './FilesCatcher.module.css'
 import {DragStatusContext} from "../../../contexts/DragStatusContext";
 import cn from 'classnames';
@@ -43,7 +44,8 @@ const FilesCatcher = ({files, setFiles}) => {
                 onDragEnter={handleDragEnter}
                 onDragLeave={handleDragLeave}
             >
-                Drop files here
+                <FolderZipIcon/>
+                Drop .zip file here
             </div>
         </div>
     )

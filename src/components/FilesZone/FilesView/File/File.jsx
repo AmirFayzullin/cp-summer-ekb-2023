@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import FolderZipIcon from '@mui/icons-material/FolderZip';
 import s from './File.module.css';
 
 const File = ({file}) => {
@@ -47,7 +48,7 @@ const File = ({file}) => {
 
     return (
         <div className={s.wrapper}>
-            <img src={src} className={s.image}/>
+            <FolderZipIcon />
             <p className={s.label}>{name}</p>
         </div>
     )
