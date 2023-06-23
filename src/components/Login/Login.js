@@ -5,8 +5,10 @@ import Button from "@mui/material/Button";
 import {AuthForm, AuthFormFooter, Fieldset, FormTitle} from "../commonStyled/AuthForm";
 import {Link} from "react-router-dom";
 import {login} from "../../api/auth";
+import {Loader} from "../common/Loader";
 
 export const Login = ({handleLogin}) => {
+    const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -24,12 +26,17 @@ export const Login = ({handleLogin}) => {
     const handleSignIn = (evt) => {
         evt.preventDefault();
 
+        setIsLoading(true);
+
         login(formData)
             .then((res) => {
                 handleLogin(res);
             })
             .catch(err => {
                 console.log(err);
+            })
+            .finally(() => {
+                setIsLoading(false);
             })
     };
 
@@ -67,6 +74,7 @@ export const Login = ({handleLogin}) => {
                     </Link>
                 </AuthFormFooter>
             </AuthForm>
+            <Loader isActive={isLoading} onClose={() => setIsLoading(false)} />
         </LoginWrapper>
     )
 };

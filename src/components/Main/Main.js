@@ -1,14 +1,12 @@
 import React from 'react';
-import Button from "@mui/material/Button";
 import {FilesSendSection} from "../FilesSendSection/FilesSendSection";
+import {Header} from "../Header/Header";
 
 export const Main = ({logout}) => {
     return (
-        <div>
+        <>
+            <Header logout={logout}/>
             <FilesSendSection/>
-            <Button onClick={logout}>
-                Log out
-            </Button>
-        </div>
+        </>
     )
 };

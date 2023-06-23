@@ -44,7 +44,7 @@ const FilesCatcher = ({files, setFiles}) => {
                 onDragEnter={handleDragEnter}
                 onDragLeave={handleDragLeave}
             >
-                <FolderZipIcon/>
+                <FolderZipIcon sx={{fontSize: '40px', marginRight: '10px'}}/>
                 Drop .zip file here
             </div>
         </div>

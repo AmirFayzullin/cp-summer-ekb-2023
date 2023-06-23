@@ -5,8 +5,10 @@ import Button from "@mui/material/Button";
 import {Link} from "react-router-dom";
 import {RegisterWrapper} from "./styled";
 import {register} from "../../api/auth";
+import {Loader} from "../common/Loader";
 
 export const Register = ({handleLogin}) => {
+    const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -25,12 +27,17 @@ export const Register = ({handleLogin}) => {
     const handleSignUp = (evt) => {
         evt.preventDefault();
 
+        setIsLoading(true);
+
         register(formData)
             .then((res) => {
                 handleLogin(res);
             })
             .catch(err => {
                 console.log(err);
+            })
+            .finally(() => {
+                setIsLoading(false);
             })
     };
 
@@ -75,6 +82,7 @@ export const Register = ({handleLogin}) => {
                     </Link>
                 </AuthFormFooter>
             </AuthForm>
+            <Loader isActive={isLoading} onClose={() => setIsLoading(false)} />
         </RegisterWrapper>
     )
 }

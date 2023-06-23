@@ -48,7 +48,7 @@ const File = ({file}) => {
 
     return (
         <div className={s.wrapper}>
-            <FolderZipIcon />
+            <FolderZipIcon sx={{fontSize: '50px'}}/>
             <p className={s.label}>{name}</p>
         </div>
     )
