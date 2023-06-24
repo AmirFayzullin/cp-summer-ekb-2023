@@ -18,6 +18,7 @@ export const FilesHistory = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const [processingSummary, setProcessingSummary] = useState(null);
+    const [summaryFolder, setSummaryFolder] = useState(null);
 
     useEffect(() => {
         setIsLoadingHistoryList(true);
@@ -28,9 +29,9 @@ export const FilesHistory = () => {
                     setFolders(res.data.data.map(folder => ({
                         ...folder,
                         name: folder.folder_name,
-                        lastModifiedDate: new Date(folder.created_at)
+                        lastModifiedDate: new Date(folder.created_at),
                     })));
-                    setPagesCount(res.data.total);
+                    setPagesCount(res.data.last_page);
                 })
                 .catch(err => {
                     console.log(err);
@@ -58,16 +59,17 @@ export const FilesHistory = () => {
         );
     }
 
-    const openProcessingSummary = (folderId) => {
+    const openProcessingSummary = (folder) => {
         setIsLoadingProcessingSummary(true);
 
-        getFolderFiles({folderId})
+        getFolderFiles({folderId: folder.id})
             .then(res => {
                 const formattedData = res.data.map(file => ({
                     ...file,
-                    lastModifiedDate: new Date(file.created_at)
+                    lastModifiedDate: new Date(file.created_at),
+                    path: file.path === '.' ? "" : file.path
                 }));
-                setProcessingSummary(buildFileStructureFromFilesList(formattedData))
+                setProcessingSummary(buildFileStructureFromFilesList(folder, formattedData))
             })
             .catch(err => {
                 console.log(err);
@@ -80,7 +82,7 @@ export const FilesHistory = () => {
     return (
         <Wrapper>
             <WithProgressLayer isLoading={isLoadingHistoryList}>
-                <FilesView files={folders} onFileClick={(file) => openProcessingSummary(file.id)}/>
+                <FilesView files={folders} onFileClick={(folder) => openProcessingSummary(folder)}/>
             </WithProgressLayer>
 
             <PaginationButtons>

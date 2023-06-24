@@ -31,7 +31,7 @@ SummaryAccordion.Folder = ({item}) => {
         <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                 <AccordionItemTitle name={item.name}
-                                    date={item.lastModifiedDate.toLocaleString()}
+                                    date={item.lastModifiedDate?.toLocaleString()}
                 >
                     <FolderZipIcon sx={{fontSize: '30px', color: 'grey'}}/>
                 </AccordionItemTitle>
@@ -49,13 +49,15 @@ SummaryAccordion.File = ({item}) => {
         <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                 <AccordionItemTitle name={item.name}
-                                    date={item.lastModifiedDate.toLocaleString()}
+                                    date={item.lastModifiedDate?.toLocaleString()}
                 >
                     <InsertDriveFileIcon sx={{fontSize: '30px', color: 'grey'}}/>
                 </AccordionItemTitle>
             </AccordionSummary>
 
-            <AccordionDetails>
+            <AccordionDetails sx={{
+                padding: '0'
+            }}>
                 {item.errors}
             </AccordionDetails>
         </Accordion>

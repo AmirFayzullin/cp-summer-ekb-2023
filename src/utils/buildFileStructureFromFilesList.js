@@ -28,8 +28,8 @@ const builtStructure = {
     ]
 };
 
-export const buildFileStructureFromFilesList = (files) => {
-    const rootFolder = createFolder({name: '', path: ''});
+export const buildFileStructureFromFilesList = (root, files) => {
+    const rootFolder = createFolder(root);
 
     files.forEach(file => {
         addFile({
@@ -85,7 +85,7 @@ const addFile = ({root, path, file}) => {
             path: root.path ? `${root.path}/${root.name}` : root.name,
             lastModifiedDate: file.lastModifiedDate
         });
-        root.items.push(folder);
+        root.items.unshift(folder);
         addFile({root, path, file});
     }
 };
