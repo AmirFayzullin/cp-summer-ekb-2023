@@ -2,18 +2,16 @@ import React, {useState, useEffect} from 'react';
 import FolderZipIcon from '@mui/icons-material/FolderZip';
 import s from './File.module.css';
 
-const File = ({file}) => {
+const File = ({file, onFileClick}) => {
     const MAX_NAME_LENGTH = 10;
 
-    const [src, setSrc] = useState('');
     const [name, setName] = useState('');
 
     useEffect(() => {
         if (!file) return () => {};
 
-        readFile(file);
-
-        setName(truncName(file.name));
+        // setName(truncName(file.name));
+        setName(file.name);
     }, [file]);
 
     const getExt = (name) => {
@@ -36,18 +34,16 @@ const File = ({file}) => {
         return truncatedName + ext;
     };
 
-    const readFile = (file) => {
-        const reader = new FileReader();
+    const handleFileClick = () => {
+        if (!onFileClick) return;
 
-        reader.onload = (e) => {
-            setSrc(e.target.result)
-        };
-
-        reader.readAsDataURL(file);
+        onFileClick(file);
     };
 
     return (
-        <div className={s.wrapper}>
+        <div className={s.wrapper}
+             onClick={handleFileClick}
+        >
             <FolderZipIcon sx={{fontSize: '50px'}}/>
             <p className={s.label}>{name}</p>
         </div>

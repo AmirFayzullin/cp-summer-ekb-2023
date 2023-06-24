@@ -27,7 +27,7 @@ export const SummaryAccordion = ({item}) => {
 SummaryAccordion.Folder = ({ name, items}) => {
 
     const nested = items.map(item => (
-        <SummaryAccordion item={item}/>
+        <SummaryAccordion item={item} key={item.id}/>
     ));
 
     return (

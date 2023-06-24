@@ -7,6 +7,19 @@ import {Page} from "./commonStyled/Page";
 import {checkToken} from "../api/auth";
 import {Main} from "./Main/Main";
 import {ProtectedRoute} from "./ProtectedRoute/ProtectedRoute";
+import {Provider} from "react-redux";
+import {store} from "../redux/store";
+import {createTheme} from "@mui/material";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+
+const mdTheme = createTheme({
+
+    palette: {
+        inactiveButton: {
+            main: 'rgba(153,153,153,0.61)',
+        }
+    },
+});
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -41,35 +54,32 @@ function App() {
   };
 
   return (
-    <>
-      <Page>
-        <Routes>
-          <Route path='/'
-                 element={
-                   <ProtectedRoute Component={Main}
-                                   isLoggedIn={isLoggedIn}
-                                   logout={logout}
-                   />
-                 }
-          />
-          <Route path="/sign-in"
-                 element={
-                   <Login handleLogin={handleLogin}/>
-                 }
-          />
-          <Route path="/sign-up"
-                 element={
-                   <Register handleLogin={handleLogin}/>
-                 }
-          />
-          <Route path="/*"
-                 element={
-                   isLoggedIn ? <Navigate to="/"/> : <Navigate to="/sign-in"/>
-                 }
-          />
-        </Routes>
-      </Page>
-    </>
+      <ThemeProvider theme={mdTheme}>
+          <Provider store={store}>
+              <Page>
+                  <Routes>
+                      <Route path="/sign-in"
+                             element={
+                                 <Login handleLogin={handleLogin}/>
+                             }
+                      />
+                      <Route path="/sign-up"
+                             element={
+                                 <Register handleLogin={handleLogin}/>
+                             }
+                      />
+                      <Route path='/*'
+                             element={
+                                 <ProtectedRoute Component={Main}
+                                                 isLoggedIn={isLoggedIn}
+                                                 logout={logout}
+                                 />
+                             }
+                      />
+                  </Routes>
+              </Page>
+          </Provider>
+      </ThemeProvider>
   );
 }
 

@@ -4,12 +4,12 @@ import File from "./File/File";
 import {DragStatusContext} from "../../../contexts/DragStatusContext";
 import cn from 'classnames';
 
-const FilesView = ({files}) => {
+const FilesView = ({files, onFileClick}) => {
 
     const dragStatus = useContext(DragStatusContext);
 
     const filesElements = files.map(file => {
-        return <File file={file} key={file.name}/>
+        return <File file={file} onFileClick={onFileClick} key={file.id}/>
     });
 
     return (
