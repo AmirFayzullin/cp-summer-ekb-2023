@@ -17,7 +17,7 @@ export const login = async ({email, password}) => {
 
     localStorage.setItem('token', res.authorisation.token);
 
-    return Promise.reject(res.user);
+    return res.user;
 };
 
 export const checkToken = async ({token}) => {

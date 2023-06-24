@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FolderZipIcon from '@mui/icons-material/FolderZip';
+import cn from 'classnames';
 import s from './File.module.css';
 
 const File = ({file, onFileClick}) => {
@@ -46,7 +47,7 @@ const File = ({file, onFileClick}) => {
         >
             <FolderZipIcon sx={{fontSize: '50px', color: 'grey'}}/>
             <p className={s.label}>{name}</p>
-            <p className={s.label}>{file.lastModifiedDate.toLocaleString()}</p>
+            <p className={cn(s.label, s.date)}>{file.lastModifiedDate.toLocaleString()}</p>
         </div>
     )
 };

@@ -1,13 +1,21 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import LoadingButton from '@mui/lab/LoadingButton';
+import AddIcon from '@mui/icons-material/Add';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Button from "@mui/material/Button";
 import {sendFile} from "../../api/files";
 import FilesZone from "../FilesZone/FilesZone";
 import {ButtonsSection, FilesSendSectionWrapper} from "./styled";
 import TextField from "@mui/material/TextField/TextField";
+import {InfoTooltipServiceContext} from "../../contexts/InfoTooltipServiceContext";
 
 export const FilesSendSection = () => {
     const [files, setFiles] = useState([]);
     const [orgName, setOrgName] = useState('');
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const {setState: setInfoTooltipState} = useContext(InfoTooltipServiceContext);
 
     const handleChange = (evt) => {
         setFiles([evt.target.files[0]]);
@@ -17,18 +25,41 @@ export const FilesSendSection = () => {
         setFiles([files[0]])
     };
 
+    const resetForm = () => {
+        setFiles([]);
+        setOrgName('');
+    };
+
     const handleSubmit = () => {
         const formData = new FormData();
 
         formData.append('file', files[0]);
         formData.append('extra_name', orgName);
 
+        setIsLoading(true);
+
         sendFile({formData})
             .then(res => {
                 console.log(res);
+
+                setInfoTooltipState({
+                    isOpen: true,
+                    isSuccess: true,
+                    message: 'Your .zip file was successfully uploaded!'
+                });
+
+                resetForm();
             })
             .catch(err => {
                 console.log(err);
+                setInfoTooltipState({
+                    isOpen: true,
+                    isSuccess: false,
+                    message: 'Something went wrong'
+                })
+            })
+            .finally(() => {
+                setIsLoading(false);
             })
     };
 
@@ -45,7 +76,11 @@ export const FilesSendSection = () => {
                        setFiles={handleFilesDrop}
             />
             <ButtonsSection>
-                <Button variant='contained'>
+                <Button variant='contained'
+                        endIcon={
+                            <AddIcon/>
+                        }
+                >
                     <label htmlFor='file-input'>
                         Add file
                         <input type="file"
@@ -56,11 +91,15 @@ export const FilesSendSection = () => {
                     </label>
                 </Button>
 
-                <Button variant='contained'
-                        onClick={handleSubmit}
+                <LoadingButton variant='contained'
+                               loading={isLoading}
+                               loadingPosition='end'
+                               disabled={files.length < 1 || orgName.length < 1 || isLoading}
+                               onClick={handleSubmit}
+                               endIcon={<CloudUploadIcon/>}
                 >
-                    send
-                </Button>
+                    {isLoading ? 'Uploading' : 'Upload'}
+                </LoadingButton>
             </ButtonsSection>
         </FilesSendSectionWrapper>
     )

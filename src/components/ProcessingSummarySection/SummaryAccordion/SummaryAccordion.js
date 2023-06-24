@@ -4,7 +4,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from "@mui/material/Typography";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import {ItemTitle} from "./styled";
+import {Date, ItemTitle} from "./styled";
 import FolderZipIcon from '@mui/icons-material/FolderZip';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
@@ -74,12 +74,14 @@ const AccordionItemTitle = ({name, date, children}) => {
             }}>
                 {name}
             </Typography>
-            <Typography sx={{
-                fontSize: '20px',
-                color: 'grey'
-            }}>
-                {date}
-            </Typography>
+            <Date>
+                <Typography sx={{
+                    fontSize: '20px',
+                    color: 'grey'
+                }}>
+                    {date}
+                </Typography>
+            </Date>
         </ItemTitle>
     )
 };
