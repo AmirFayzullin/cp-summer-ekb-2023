@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useEffect} from "react";
-import {WithProgressLayer} from "./FilesHistoryList/WithProgressLayer";
+import {WithProgressLayer} from "../common/WithProgressLayer/WithProgressLayer";
 import {getFolderFiles, getFolders} from "../../api/files";
 import Button from "@mui/material/Button";
 import {ProcessingSummarySection} from "../ProcessingSummarySection/ProcessingSummarySection";
@@ -39,6 +39,7 @@ export const FilesHistory = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const [processingSummary, setProcessingSummary] = useState(null);
+    const [processingSummaryFolder, setProcessingSummaryFolder] = useState(null);
 
     useEffect(() => {
         setIsLoadingHistoryList(true);
@@ -62,29 +63,10 @@ export const FilesHistory = () => {
         }, 1000);
     }, [currentPage]);
 
-    const pagesButtons = [];
-
-    for (let pageNumber = 1; pageNumber <= pagesCount; pageNumber++) {
-        pagesButtons.push(
-            <Button onClick={() => setCurrentPage(pageNumber)}
-                    variant='contained'
-                    color={currentPage === pageNumber ? 'primary' : 'inactiveButton'}
-                    sx={{
-                        color: 'white',
-                        height: '50px',
-                        width: '50px',
-                        fontSize: '1.3rem',
-                        padding: '0'
-                    }}
-                    key={pageNumber}
-            >
-                {pageNumber}
-            </Button>
-        );
-    }
-
     const openProcessingSummary = (folder) => {
         setIsLoadingProcessingSummary(true);
+
+        setProcessingSummaryFolder(folder);
 
         getFolderFiles({folderId: folder.id})
             .then(res => {
@@ -113,6 +95,27 @@ export const FilesHistory = () => {
             })
     };
 
+    const pagesButtons = [];
+
+    for (let pageNumber = 1; pageNumber <= pagesCount; pageNumber++) {
+        pagesButtons.push(
+            <Button onClick={() => setCurrentPage(pageNumber)}
+                    variant='contained'
+                    color={currentPage === pageNumber ? 'primary' : 'inactiveButton'}
+                    sx={{
+                        color: 'white',
+                        height: '50px',
+                        width: '50px',
+                        fontSize: '1.3rem',
+                        padding: '0'
+                    }}
+                    key={pageNumber}
+            >
+                {pageNumber}
+            </Button>
+        );
+    }
+
     return (
         <Wrapper>
             <Section>
@@ -131,7 +134,10 @@ export const FilesHistory = () => {
                 </RenderableArea>
             </Section>
 
-            <ProcessingSummarySection root={processingSummary} isLoading={isLoadingProcessingSummary}/>
+            <ProcessingSummarySection root={processingSummary}
+                                      folder={processingSummaryFolder}
+                                      isLoading={isLoadingProcessingSummary}
+            />
         </Wrapper>
     )
 };
