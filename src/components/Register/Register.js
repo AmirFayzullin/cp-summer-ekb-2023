@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import TextField from "@mui/material/TextField/TextField";
 import {AuthForm, AuthFormFooter, Fieldset, FormTitle} from "../commonStyled/AuthForm";
 import Button from "@mui/material/Button";
@@ -6,9 +6,13 @@ import {Link} from "react-router-dom";
 import {RegisterWrapper} from "./styled";
 import {register} from "../../api/auth";
 import {Loader} from "../common/Loader";
+import {InfoTooltipServiceContext} from "../../contexts/InfoTooltipServiceContext";
 
 export const Register = ({handleLogin}) => {
     const [isLoading, setIsLoading] = useState(false);
+
+    const {setState: setInfoTooltipState} = useContext(InfoTooltipServiceContext);
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -31,10 +35,21 @@ export const Register = ({handleLogin}) => {
 
         register(formData)
             .then((res) => {
+                setInfoTooltipState({
+                    isOpen: true,
+                    isSuccess: true,
+                    message: `Successful registration, ${formData.name}!`
+                });
                 handleLogin(res);
             })
             .catch(err => {
                 console.log(err);
+
+                setInfoTooltipState({
+                    isOpen: true,
+                    isSuccess: false,
+                    message: 'Something went wrong'
+                });
             })
             .finally(() => {
                 setIsLoading(false);

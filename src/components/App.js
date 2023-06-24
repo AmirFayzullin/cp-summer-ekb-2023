@@ -11,6 +11,7 @@ import {Provider} from "react-redux";
 import {store} from "../redux/store";
 import {createTheme} from "@mui/material";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import {InfoTooltipService} from "./common/services/InfoTooltipService";
 
 const mdTheme = createTheme({
 
@@ -56,28 +57,30 @@ function App() {
   return (
       <ThemeProvider theme={mdTheme}>
           <Provider store={store}>
-              <Page>
-                  <Routes>
-                      <Route path="/sign-in"
-                             element={
-                                 <Login handleLogin={handleLogin}/>
-                             }
-                      />
-                      <Route path="/sign-up"
-                             element={
-                                 <Register handleLogin={handleLogin}/>
-                             }
-                      />
-                      <Route path='/*'
-                             element={
-                                 <ProtectedRoute Component={Main}
-                                                 isLoggedIn={isLoggedIn}
-                                                 logout={logout}
-                                 />
-                             }
-                      />
-                  </Routes>
-              </Page>
+              <InfoTooltipService>
+                  <Page>
+                      <Routes>
+                          <Route path="/sign-in"
+                                 element={
+                                     <Login handleLogin={handleLogin}/>
+                                 }
+                          />
+                          <Route path="/sign-up"
+                                 element={
+                                     <Register handleLogin={handleLogin}/>
+                                 }
+                          />
+                          <Route path='/*'
+                                 element={
+                                     <ProtectedRoute Component={Main}
+                                                     isLoggedIn={isLoggedIn}
+                                                     logout={logout}
+                                     />
+                                 }
+                          />
+                      </Routes>
+                  </Page>
+              </InfoTooltipService>
           </Provider>
       </ThemeProvider>
   );

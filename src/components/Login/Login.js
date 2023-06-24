@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import TextField from "@mui/material/TextField";
 import {LoginWrapper} from "./styled";
 import Button from "@mui/material/Button";
@@ -6,9 +6,14 @@ import {AuthForm, AuthFormFooter, Fieldset, FormTitle} from "../commonStyled/Aut
 import {Link} from "react-router-dom";
 import {login} from "../../api/auth";
 import {Loader} from "../common/Loader";
+import {InfoTooltipServiceContext} from "../../contexts/InfoTooltipServiceContext";
+
 
 export const Login = ({handleLogin}) => {
     const [isLoading, setIsLoading] = useState(false);
+
+    const {setState: setInfoTooltipState} = useContext(InfoTooltipServiceContext);
+
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -34,6 +39,11 @@ export const Login = ({handleLogin}) => {
             })
             .catch(err => {
                 console.log(err);
+                setInfoTooltipState({
+                    isOpen: true,
+                    isSuccess: false,
+                    message: "Something went wrong"
+                })
             })
             .finally(() => {
                 setIsLoading(false);
