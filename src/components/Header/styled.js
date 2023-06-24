@@ -16,5 +16,6 @@ export const HeaderWrapper = styled.div`
     padding: 10px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    box-shadow: 0 2px 10px 0 lightgrey;
 `;
 

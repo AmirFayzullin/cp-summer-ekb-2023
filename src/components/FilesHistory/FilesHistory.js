@@ -9,6 +9,8 @@ import {PaginationButtons, Wrapper} from "./styled";
 import FilesView from "../FilesZone/FilesView/FilesView";
 import {LoremIpsum} from 'lorem-ipsum';
 import {SectionTitle} from "../commonStyled/SectionTitle";
+import {RenderableArea} from "../commonStyled/RenderableArea";
+import {Section} from "../commonStyled/Section";
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -113,18 +115,21 @@ export const FilesHistory = () => {
 
     return (
         <Wrapper>
-            <SectionTitle>
-                My files
-            </SectionTitle>
+            <Section>
+                <RenderableArea>
+                    <SectionTitle>
+                        My files
+                    </SectionTitle>
 
-            <WithProgressLayer isLoading={isLoadingHistoryList}>
-                <FilesView files={folders} onFileClick={(folder) => openProcessingSummary(folder)}/>
-            </WithProgressLayer>
+                    <WithProgressLayer isLoading={isLoadingHistoryList}>
+                        <FilesView files={folders} onFileClick={(folder) => openProcessingSummary(folder)}/>
+                    </WithProgressLayer>
 
-            <PaginationButtons>
-                {pagesButtons}
-            </PaginationButtons>
-
+                    <PaginationButtons>
+                        {pagesButtons}
+                    </PaginationButtons>
+                </RenderableArea>
+            </Section>
 
             <ProcessingSummarySection root={processingSummary} isLoading={isLoadingProcessingSummary}/>
         </Wrapper>

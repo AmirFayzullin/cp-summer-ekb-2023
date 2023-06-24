@@ -6,6 +6,8 @@ import {SummaryAccordion} from "./SummaryAccordion/SummaryAccordion";
 import {SectionTitle} from "../commonStyled/SectionTitle";
 import {WithProgressLayer} from "../FilesHistory/FilesHistoryList/WithProgressLayer";
 import {Wrapper} from "./styled";
+import {DarkenSection, Section} from "../commonStyled/Section";
+import {RenderableArea} from "../commonStyled/RenderableArea";
 
 // const files = [
 //     {
@@ -56,16 +58,29 @@ export const ProcessingSummarySection = ({root, isLoading}) => {
         });
     }, [isLoading]);
     return (
-        <Wrapper ref={wrapperRef}>
-            {
-                root &&
-                <SectionTitle>
-                    Summary
-                </SectionTitle>
-            }
-            <WithProgressLayer isLoading={isLoading}>
-                {root && <SummaryAccordion item={root}/>}
-            </WithProgressLayer>
-        </Wrapper>
+        <DarkenSection ref={wrapperRef}>
+            <RenderableArea>
+                <Wrapper>
+                    <SectionTitle>
+                        Summary
+                    </SectionTitle>
+
+                    <WithProgressLayer isLoading={isLoading}>
+                        {root && <SummaryAccordion item={root}/>}
+                        {
+                            !root &&
+                            <p style={{
+                                fontSize: '1.5rem',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                color: 'grey'
+                            }}>
+                                Choose a folder to view summary
+                            </p>
+                        }
+                    </WithProgressLayer>
+                </Wrapper>
+            </RenderableArea>
+        </DarkenSection>
     )
 };

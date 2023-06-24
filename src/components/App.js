@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {Routes, Route, Navigate, useNavigate} from 'react-router-dom'
 import '../App.css';
 import {Login} from "./Login/Login";
@@ -9,23 +9,16 @@ import {Main} from "./Main/Main";
 import {ProtectedRoute} from "./ProtectedRoute/ProtectedRoute";
 import {Provider} from "react-redux";
 import {store} from "../redux/store";
-import {createTheme} from "@mui/material";
-import ThemeProvider from "@mui/material/styles/ThemeProvider";
-import {InfoTooltipService} from "./common/services/InfoTooltipService";
 import {UserDataContext} from "../contexts/UserDataContext";
-
-const mdTheme = createTheme({
-
-    palette: {
-        inactiveButton: {
-            main: 'rgba(22,103,197,0.5)',
-        }
-    },
-});
+import {createSocketConnection} from "../api/ws";
+import {NotificationsServiceContext} from "../contexts/NotificationsServiceContext";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState(null);
+    const [wsConnected, setWsConnected] = useState(false);
+
+    const {addMessage: addNotification} = useContext(NotificationsServiceContext);
 
     const navigate = useNavigate();
 
@@ -34,6 +27,21 @@ function App() {
         setIsLoggedIn(true);
         navigate('/');
     };
+
+    useEffect(() => {
+        if (wsConnected || !isLoggedIn) return;
+        setWsConnected(true);
+        createSocketConnection(localStorage.getItem('token'));
+
+        window.Echo.channel('front')
+            .listen('.MyWebSocket', (e) => {
+                const fileName = e.data.files[0].file_name;
+                addNotification({
+                    severity: 'success',
+                    content: `${fileName} successfully processed!`
+                })
+            })
+    }, [isLoggedIn]);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -56,36 +64,33 @@ function App() {
     };
 
     return (
-        <ThemeProvider theme={mdTheme}>
-            <Provider store={store}>
-                <UserDataContext.Provider value={userData}>
-                    <InfoTooltipService>
-                        <Page>
-                            <Routes>
-                                <Route path="/sign-in"
-                                       element={
-                                           <Login handleLogin={handleLogin}/>
-                                       }
-                                />
-                                <Route path="/sign-up"
-                                       element={
-                                           <Register handleLogin={handleLogin}/>
-                                       }
-                                />
-                                <Route path='/*'
-                                       element={
-                                           <ProtectedRoute Component={Main}
-                                                           isLoggedIn={isLoggedIn}
-                                                           logout={logout}
-                                           />
-                                       }
-                                />
-                            </Routes>
-                        </Page>
-                    </InfoTooltipService>
-                </UserDataContext.Provider>
-            </Provider>
-        </ThemeProvider>
+
+        <Provider store={store}>
+            <UserDataContext.Provider value={userData}>
+                <Page>
+                    <Routes>
+                        <Route path="/sign-in"
+                               element={
+                                   <Login handleLogin={handleLogin}/>
+                               }
+                        />
+                        <Route path="/sign-up"
+                               element={
+                                   <Register handleLogin={handleLogin}/>
+                               }
+                        />
+                        <Route path='/*'
+                               element={
+                                   <ProtectedRoute Component={Main}
+                                                   isLoggedIn={isLoggedIn}
+                                                   logout={logout}
+                                   />
+                               }
+                        />
+                    </Routes>
+                </Page>
+            </UserDataContext.Provider>
+        </Provider>
     );
 }
 

@@ -13,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import {UserDataContext} from "../../contexts/UserDataContext";
+import {Logo} from "../common/Logo";
 
 const NAV_CONFIG = [
     {
@@ -30,7 +31,9 @@ const NAV_CONFIG = [
 export const Header = ({logout}) => {
     return (
         <HeaderWrapper>
-            <div></div>
+            <div>
+                <Logo fontSize={25}/>
+            </div>
             <NavWrapper>
                 {NAV_CONFIG.map(buttonConfig => <NavButton key={buttonConfig.name} {...buttonConfig}/>)}
             </NavWrapper>
@@ -65,7 +68,6 @@ const NavButton = ({name, route, Icon}) => {
 
 const AccountMenu = ({onLogout}) => {
     const userData = useContext(UserDataContext);
-    console.log(userData);
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);

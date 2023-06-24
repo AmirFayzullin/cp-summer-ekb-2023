@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+    width: 100%;
     display: grid;
     grid-auto-rows: auto;
-    grid-gap: 20px;
+    grid-gap: 40px;
 `;
 
 export const PaginationButtons = styled.div`
@@ -13,4 +14,5 @@ export const PaginationButtons = styled.div`
     justify-content: center;
     display: grid;
     grid-gap: 10px;
+    margin-top: 20px;
 `;

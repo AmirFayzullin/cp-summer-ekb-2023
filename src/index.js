@@ -4,14 +4,33 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import {NotificationsService} from "./components/common/services/NotificationsService";
+import {InfoTooltipService} from "./components/common/services/InfoTooltipService";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import {createTheme} from "@mui/material";
+
+const mdTheme = createTheme({
+
+    palette: {
+        inactiveButton: {
+            main: 'rgba(22,103,197,0.5)',
+        }
+    },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-      <BrowserRouter>
-          <App />
-      </BrowserRouter>
-  </React.StrictMode>
+    <React.StrictMode>
+        <BrowserRouter>
+            <ThemeProvider theme={mdTheme}>
+                <InfoTooltipService>
+                    <NotificationsService>
+                        <App/>
+                    </NotificationsService>
+                </InfoTooltipService>
+            </ThemeProvider>
+        </BrowserRouter>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -10,25 +10,23 @@ export const Main = ({isLoggedIn, logout}) => {
     return (
         <>
             <Header logout={logout}/>
-            <Wrapper>
-                <Routes>
-                    <Route path='/new'
-                           element={
-                               <NewFileProcessing/>
-                           }
-                    />
-                    <Route path='/history'
-                           element={
-                               <FilesHistory/>
-                           }
-                    />
-                    <Route path="/*"
-                           element={
-                               isLoggedIn ? <Navigate to="/new"/> : <Navigate to="/sign-in"/>
-                           }
-                    />
-                </Routes>
-            </Wrapper>
+            <Routes>
+                <Route path='/new'
+                       element={
+                           <NewFileProcessing/>
+                       }
+                />
+                <Route path='/history'
+                       element={
+                           <FilesHistory/>
+                       }
+                />
+                <Route path="/*"
+                       element={
+                           isLoggedIn ? <Navigate to="/new"/> : <Navigate to="/sign-in"/>
+                       }
+                />
+            </Routes>
         </>
     )
 };

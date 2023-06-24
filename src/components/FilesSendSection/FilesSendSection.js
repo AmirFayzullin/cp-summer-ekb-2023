@@ -9,6 +9,7 @@ import {ButtonsSection, FilesSendSectionWrapper} from "./styled";
 import TextField from "@mui/material/TextField/TextField";
 import {InfoTooltipServiceContext} from "../../contexts/InfoTooltipServiceContext";
 import {SectionTitle} from "../commonStyled/SectionTitle";
+import Alert from "@mui/material/Alert/Alert";
 
 export const FilesSendSection = () => {
     const [files, setFiles] = useState([]);
