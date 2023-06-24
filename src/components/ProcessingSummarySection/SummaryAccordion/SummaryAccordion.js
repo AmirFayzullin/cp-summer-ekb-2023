@@ -28,12 +28,14 @@ SummaryAccordion.Folder = ({item}) => {
     ));
 
     return (
-        <Accordion>
+        <Accordion sx={{
+            boxShadow: 'none',
+            border: 'solid 1px lightgrey'
+        }}>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                 <AccordionItemTitle name={item.name}
-                                    date={item.lastModifiedDate?.toLocaleString()}
-                >
-                    <FolderZipIcon sx={{fontSize: '30px', color: 'grey'}}/>
+                                    date={item.lastModifiedDate?.toLocaleString()}>
+                    <FolderZipIcon sx={{fontSize: '30px', color: '#f1c300'}}/>
                 </AccordionItemTitle>
             </AccordionSummary>
 
@@ -46,7 +48,10 @@ SummaryAccordion.Folder = ({item}) => {
 
 SummaryAccordion.File = ({item}) => {
     return (
-        <Accordion>
+        <Accordion sx={{
+            boxShadow: 'none',
+            background: 'rgba(241,241,241,0.9)'
+        }}>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                 <AccordionItemTitle name={item.name}
                                     date={item.lastModifiedDate?.toLocaleString()}

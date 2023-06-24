@@ -50,7 +50,11 @@ export const FilesHistory = () => {
                     variant='contained'
                     color={currentPage === pageNumber ? 'primary' : 'inactiveButton'}
                     sx={{
-                        color: 'white'
+                        color: 'white',
+                        height: '50px',
+                        width: '50px',
+                        fontSize: '1.3rem',
+                        padding: '0'
                     }}
                     key={pageNumber}
             >
