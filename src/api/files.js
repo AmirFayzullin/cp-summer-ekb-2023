@@ -8,3 +8,11 @@ export const sendFile = ({formData}) => {
         body: formData
     }).json();
 };
+
+export const getFiles = ({page}) => {
+    return baseApi.get(`folder?page=${page}`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    }).json();
+};
