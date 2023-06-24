@@ -28,19 +28,25 @@ function App() {
         navigate('/');
     };
 
+    const handleWSMessage = (e) => {
+        const fileName = e.data.files[0].file_name;
+        addNotification({
+            severity: 'success',
+            content: `${fileName} successfully processed!`
+        })
+    };
+
     useEffect(() => {
         if (wsConnected || !isLoggedIn) return;
         setWsConnected(true);
         createSocketConnection(localStorage.getItem('token'));
 
         window.Echo.channel('front')
-            .listen('.MyWebSocket', (e) => {
-                const fileName = e.data.files[0].file_name;
-                addNotification({
-                    severity: 'success',
-                    content: `${fileName} successfully processed!`
-                })
-            })
+            .listen('MyWebSocket', handleWSMessage);
+
+        window.Echo.channel('front')
+            .listen('.MyWebSocket', handleWSMessage);
+
     }, [isLoggedIn]);
 
     useEffect(() => {

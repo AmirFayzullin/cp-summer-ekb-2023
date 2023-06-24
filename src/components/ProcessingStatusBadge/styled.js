@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Badge = styled.div`
-    width: max-content;
+    min-width: 120px;
     margin: 0 20px;
     display: flex;
     gap: 10px;

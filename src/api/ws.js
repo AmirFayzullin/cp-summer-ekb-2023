@@ -22,9 +22,3 @@ export function createSocketConnection(token) {
         });
     }
 }
-
-export class WS {
-    static connect() {
-
-    }
-}

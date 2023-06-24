@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import FolderZipIcon from '@mui/icons-material/FolderZip';
 import cn from 'classnames';
 import s from './File.module.css';
+import TrackChangesIcon from "@mui/material/SvgIcon/SvgIcon";
+import {PrecisionBadge} from "../../../ProcessingSummarySection/styled";
+import Tooltip from "@mui/material/Tooltip";
 
 const File = ({file, onFileClick}) => {
     const MAX_NAME_LENGTH = 15;
@@ -9,7 +12,8 @@ const File = ({file, onFileClick}) => {
     const [name, setName] = useState('');
 
     useEffect(() => {
-        if (!file) return () => {};
+        if (!file) return () => {
+        };
 
         // setName(truncName(file.name));
         setName(file.name);
@@ -41,12 +45,24 @@ const File = ({file, onFileClick}) => {
         onFileClick(file);
     };
 
+    const prec = file.precision;
+
     return (
         <div className={s.wrapper}
              onClick={handleFileClick}
         >
             <FolderZipIcon sx={{fontSize: '50px', color: '#f1c300'}}/>
-            <p className={s.label}>{name}</p>
+            <p className={s.label}>
+                {name}
+            </p>
+
+            {
+                prec &&
+                    <Tooltip title="Precision">
+                        <p className={s.label}>{prec}%</p>
+                    </Tooltip>
+            }
+
             <p className={cn(s.label, s.date)}>{file.lastModifiedDate.toLocaleString()}</p>
         </div>
     )

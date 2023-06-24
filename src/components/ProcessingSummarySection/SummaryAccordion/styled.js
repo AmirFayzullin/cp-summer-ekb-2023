@@ -22,6 +22,7 @@ export const ErrorsList = styled.div`
 
 export const ErrorItem = styled.div`
     display: grid;
+    grid-gap: 5px;
     grid-template-columns: 1fr 3fr 50px;
     min-height: 40px;
     padding: 0 10px;
@@ -29,8 +30,8 @@ export const ErrorItem = styled.div`
 
 export const ErrorsListTitle = styled(ErrorItem)`
     font-size: 1.3rem;
-    color: grey; 
-    border-bottom: solid 2px #00000057;
+    color: #3c3c3c; 
+    border-bottom: solid 2px #3c3c3c;
 `;
 
 export const SuccessWrapper = styled.div`
