@@ -4,10 +4,12 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from "@mui/material/Typography";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import {Date, ItemTitle} from "./styled";
+import {Date, ErrorItem, ErrorsList, ErrorsListTitle, ItemTitle, SuccessWrapper} from "./styled";
 import FolderZipIcon from '@mui/icons-material/FolderZip';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import {ProcessingStatusBadge} from "../../ProcessingStatusBadge/ProcessingStatusBadge";
+import CheckIcon from "@mui/icons-material/Check";
+import Grow from "@mui/material/Grow/Grow";
 
 export const SummaryAccordion = ({item}) => {
     switch (item.isFolder) {
@@ -51,7 +53,7 @@ SummaryAccordion.File = ({item}) => {
     return (
         <Accordion sx={{
             boxShadow: 'none',
-            background: 'rgba(241,241,241,0.9)'
+            background: '#f1f1f169'
         }}>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                 <AccordionItemTitle name={item.name}
@@ -64,9 +66,9 @@ SummaryAccordion.File = ({item}) => {
             </AccordionSummary>
 
             <AccordionDetails sx={{
-                padding: '0'
+                padding: '10px'
             }}>
-                {item.errors}
+                <FileErrorsSummary errors={item.errors}/>
             </AccordionDetails>
         </Accordion>
     )
@@ -93,3 +95,48 @@ const AccordionItemTitle = ({name, date, children}) => {
         </ItemTitle>
     )
 };
+
+const FileErrorsSummary = ({errors}) => {
+    const hasErrors = errors?.length > 0;
+
+    return (
+        <>
+            {
+                hasErrors &&
+                <ErrorsList>
+                    <ErrorsListTitle>
+                        <p>Name</p>
+                        <p>Description</p>
+                        <p style={{justifySelf: 'flex-end'}}>Page</p>
+                    </ErrorsListTitle>
+                    { errors?.map(error => <Error error={error}/>) }
+                </ErrorsList>
+            }
+
+            {!hasErrors && <Success />}
+        </>
+    )
+};
+
+const Error = ({error}) => {
+
+    return (
+        <ErrorItem>
+            <p>{error.name}</p>
+            <p>{error.description}</p>
+            <p style={{justifySelf: 'flex-end'}}>{error.page}</p>
+        </ErrorItem>
+    )
+};
+
+const Success = () => {
+    return (
+        <SuccessWrapper>
+            <Grow in={true} timeout={1500}>
+                <CheckIcon style={{fontSize: "2.5em", color: '#009c8e'}}/>
+            </Grow>
+            Success
+        </SuccessWrapper>
+    )
+};
+

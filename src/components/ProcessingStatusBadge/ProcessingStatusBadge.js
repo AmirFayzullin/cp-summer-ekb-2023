@@ -9,7 +9,7 @@ export const ProcessingStatusBadge = ({errors}) => {
 
     switch (errorsCount > 0) {
         case true:
-            return <ProcessingStatusBadge.Error errorsCount={3}/>;
+            return <ProcessingStatusBadge.Error errorsCount={errorsCount}/>;
         case false:
             return <ProcessingStatusBadge.Success />
     }

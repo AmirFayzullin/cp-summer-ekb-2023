@@ -4,9 +4,9 @@ body {
   --link-bkg: hsl(210, 50%, 50%);
   --bkg-color-l-7: rgba(91, 94, 101, 0.19);
   --bkg-color-l-6: #42454b;
-  --bkg-color-l-5: #34373c;
+  --bkg-color-l-5: #ddecff;
   --bkg-color-l-4: #2D2F34;
-  --bkg-color-l-3: #27292D;
+  --bkg-color-l-3: rgba(39, 41, 45, 0.58);
   --bkg-color-l-2: #1F2023;
   --bkg-color-l-1: #010101;
 }

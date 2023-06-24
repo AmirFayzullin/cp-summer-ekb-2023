@@ -7,6 +7,24 @@ import {ProcessingSummarySection} from "../ProcessingSummarySection/ProcessingSu
 import {buildFileStructureFromFilesList} from "../../utils/buildFileStructureFromFilesList";
 import {PaginationButtons, Wrapper} from "./styled";
 import FilesView from "../FilesZone/FilesView/FilesView";
+import { LoremIpsum  } from 'lorem-ipsum';
+
+const lorem = new LoremIpsum({
+    sentencesPerParagraph: {
+        max: 8,
+        min: 4
+    },
+    wordsPerSentence: {
+        max: 16,
+        min: 4
+    }
+});
+
+const getErrorSample = () => ({
+    name: 'Error name',
+    page: +(Math.random() * 100).toFixed(0),
+    description: lorem.generateWords(+(Math.random() * 50).toFixed(0))
+});
 
 export const FilesHistory = () => {
 
@@ -68,11 +86,21 @@ export const FilesHistory = () => {
 
         getFolderFiles({folderId: folder.id})
             .then(res => {
-                const formattedData = res.data.map(file => ({
+                const errorsCount = +((Math.random() * 10).toFixed(0));
+
+                let errors = [];
+
+                for (let i = 0; i < errorsCount; i++) errors.push(getErrorSample());
+
+                const formattedData = res.data.map(file => {
+                    const shouldAddErrors = Math.random() > 0.45;
+                    return {
                     ...file,
-                    lastModifiedDate: new Date(file.created_at),
-                    path: file.path === '.' ? "" : file.path
-                }));
+                        lastModifiedDate: new Date(file.created_at),
+                        path: file.path === '.' ? "" : file.path,
+                        errors: shouldAddErrors ? errors : null,
+                    }
+                });
                 setProcessingSummary(buildFileStructureFromFilesList(folder, formattedData))
             })
             .catch(err => {
