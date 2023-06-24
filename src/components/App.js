@@ -16,7 +16,7 @@ const mdTheme = createTheme({
 
     palette: {
         inactiveButton: {
-            main: 'rgba(153,153,153,0.61)',
+            main: 'rgba(153,153,153,0.31)',
         }
     },
 });

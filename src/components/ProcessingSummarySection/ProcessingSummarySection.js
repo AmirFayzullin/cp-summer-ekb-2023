@@ -41,7 +41,7 @@ import {SummaryAccordion} from "./SummaryAccordion/SummaryAccordion";
 export const ProcessingSummarySection = ({root}) => {
     return (
         <>
-            <SummaryAccordion item={root} />
+            <SummaryAccordion item={root.items[0]} />
         </>
     )
 };

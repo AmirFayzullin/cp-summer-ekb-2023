@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import {useEffect} from "react";
-import {FoldersHistoryList} from "./FilesHistoryList/FoldersHistoryList";
+import {WithProgressLayer} from "./FilesHistoryList/WithProgressLayer";
 import {getFolderFiles, getFolders} from "../../api/files";
 import Button from "@mui/material/Button";
 import {ProcessingSummarySection} from "../ProcessingSummarySection/ProcessingSummarySection";
 import {buildFileStructureFromFilesList} from "../../utils/buildFileStructureFromFilesList";
+import {PaginationButtons, Wrapper} from "./styled";
+import FilesView from "../FilesZone/FilesView/FilesView";
 
 export const FilesHistory = () => {
 
@@ -19,17 +21,24 @@ export const FilesHistory = () => {
 
     useEffect(() => {
         setIsLoadingHistoryList(true);
-        getFolders({page: currentPage})
-            .then(res => {
-                setFolders(res.data.data.map(folder => ({...folder, name: folder.folder_name})));
-                setPagesCount(res.data.total);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-            .finally(() => {
-                setIsLoadingHistoryList(false);
-            })
+
+        setTimeout(() => {
+            getFolders({page: currentPage})
+                .then(res => {
+                    setFolders(res.data.data.map(folder => ({
+                        ...folder,
+                        name: folder.folder_name,
+                        lastModifiedDate: new Date(folder.created_at)
+                    })));
+                    setPagesCount(res.data.total);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .finally(() => {
+                    setIsLoadingHistoryList(false);
+                })
+        }, 1000);
     }, [currentPage]);
 
     const pagesButtons = [];
@@ -39,6 +48,9 @@ export const FilesHistory = () => {
             <Button onClick={() => setCurrentPage(pageNumber)}
                     variant='contained'
                     color={currentPage === pageNumber ? 'primary' : 'inactiveButton'}
+                    sx={{
+                        color: 'white'
+                    }}
                     key={pageNumber}
             >
                 {pageNumber}
@@ -51,7 +63,11 @@ export const FilesHistory = () => {
 
         getFolderFiles({folderId})
             .then(res => {
-                setProcessingSummary(buildFileStructureFromFilesList(res.data))
+                const formattedData = res.data.map(file => ({
+                    ...file,
+                    lastModifiedDate: new Date(file.created_at)
+                }));
+                setProcessingSummary(buildFileStructureFromFilesList(formattedData))
             })
             .catch(err => {
                 console.log(err);
@@ -62,17 +78,19 @@ export const FilesHistory = () => {
     };
 
     return (
-        <>
-            <FoldersHistoryList isLoading={isLoadingHistoryList}
-                                folders={folders}
-                                openSummary={openProcessingSummary}
-            />
+        <Wrapper>
+            <WithProgressLayer isLoading={isLoadingHistoryList}>
+                <FilesView files={folders} onFileClick={(file) => openProcessingSummary(file.id)}/>
+            </WithProgressLayer>
 
-            <div>
+            <PaginationButtons>
                 {pagesButtons}
-            </div>
+            </PaginationButtons>
 
-            {processingSummary && <ProcessingSummarySection root={processingSummary}/>}
-        </>
+
+            <WithProgressLayer isLoading={isLoadingProcessingSummary}>
+                {processingSummary && <ProcessingSummarySection root={processingSummary}/> }
+            </WithProgressLayer>
+        </Wrapper>
     )
 };

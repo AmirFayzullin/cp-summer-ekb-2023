@@ -1,31 +1,25 @@
 .wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: min-content auto auto;
+    grid-gap: 20px;
     align-items: center;
-    padding: 10px;
+    padding: 10px 20px;
     box-sizing: border-box;
-    background: var(--bkg-color-l-7);
+    background: rgba(128, 128, 128, 0.16);
     border-radius: 10px;
     position: relative;
+    cursor: pointer;
+    transition: .2s;
+    color: #484848;
+    height: 70px;
 }
 
-.image {
-    width: 100px;
-    height: calc(100px * 1.414);         /*A4 size*/
+.wrapper:hover {
+    background: rgba(171, 171, 171, 0.57);
 }
+
 
 .label {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin: 5px;
-}
-
-.delete {
-    width: 20px;
-    height: 20px;
-    background-size: 90%;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    cursor: pointer;
 }

@@ -8,8 +8,8 @@ const FilesView = ({files, onFileClick}) => {
 
     const dragStatus = useContext(DragStatusContext);
 
-    const filesElements = files.map(file => {
-        return <File file={file} onFileClick={onFileClick} key={file.id}/>
+    const filesElements = files.map((file, index) => {
+        return <File file={file} onFileClick={onFileClick} key={file.name + index}/>
     });
 
     return (

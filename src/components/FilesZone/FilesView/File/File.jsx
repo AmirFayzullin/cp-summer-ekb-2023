@@ -3,7 +3,7 @@ import FolderZipIcon from '@mui/icons-material/FolderZip';
 import s from './File.module.css';
 
 const File = ({file, onFileClick}) => {
-    const MAX_NAME_LENGTH = 10;
+    const MAX_NAME_LENGTH = 15;
 
     const [name, setName] = useState('');
 
@@ -44,8 +44,9 @@ const File = ({file, onFileClick}) => {
         <div className={s.wrapper}
              onClick={handleFileClick}
         >
-            <FolderZipIcon sx={{fontSize: '50px'}}/>
+            <FolderZipIcon sx={{fontSize: '50px', color: 'grey'}}/>
             <p className={s.label}>{name}</p>
+            <p className={s.label}>{file.lastModifiedDate.toLocaleString()}</p>
         </div>
     )
 };

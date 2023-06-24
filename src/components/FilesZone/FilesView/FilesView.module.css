@@ -1,11 +1,12 @@
 .wrapper {
-    min-height: 100px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    min-height: 200px;
+    display: grid;
+    grid-auto-rows: min-content;
     grid-gap: 10px;
     position: relative;
     transition: .2s;
+    width: 100%;
+    height: 100%;
 }
 
 .wrapper.hidden {

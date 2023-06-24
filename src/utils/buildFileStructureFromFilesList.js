@@ -37,25 +37,27 @@ export const buildFileStructureFromFilesList = (files) => {
             path: file.path,
             file
         })
-    })
+    });
 
     return rootFolder;
 };
 
-const createFolder = ({name, path}) => ({
+const createFolder = ({name, path, lastModifiedDate}) => ({
     isFolder: true,
     name,
     path,
+    lastModifiedDate,
     id: (Math.random() * 10 ** 10).toFixed(0),
     items: []
 });
 
-const createFile = ({name, id, errors, path}) => ({
+const createFile = ({name, id, errors, path, lastModifiedDate}) => ({
     isFolder: false,
     name,
     id,
     errors,
-    path
+    path,
+    lastModifiedDate
 });
 
 const addFile = ({root, path, file}) => {
@@ -80,7 +82,8 @@ const addFile = ({root, path, file}) => {
     } else {
         const folder = createFolder({
             name: nextFolderName,
-            path: root.path ? `${root.path}/${root.name}` : root.name
+            path: root.path ? `${root.path}/${root.name}` : root.name,
+            lastModifiedDate: file.lastModifiedDate
         });
         root.items.push(folder);
         addFile({root, path, file});
