@@ -14,5 +14,5 @@ export const PaginationButtons = styled.div`
     justify-content: center;
     display: grid;
     grid-gap: 10px;
-    margin-top: 20px;
+    margin: 20px 0;
 `;

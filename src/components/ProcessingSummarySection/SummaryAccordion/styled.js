@@ -4,7 +4,7 @@ export const ItemTitle = styled.div`
     width: 100%;
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 50px max-content auto;
+    grid-template-columns: 50px 50% auto auto;
     grid-gap: 20px;
     align-items: center;
     padding: 0 5px;

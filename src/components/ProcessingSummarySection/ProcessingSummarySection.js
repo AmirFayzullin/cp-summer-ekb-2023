@@ -3,7 +3,7 @@ import {SummaryAccordion} from "./SummaryAccordion/SummaryAccordion";
 import {SectionTitle} from "../commonStyled/SectionTitle";
 import {WithProgressLayer} from "../common/WithProgressLayer/WithProgressLayer";
 import {PrecisionBadge, Wrapper} from "./styled";
-import {DarkenSection} from "../commonStyled/Section";
+import {DarkenSection, Section} from "../commonStyled/Section";
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import {RenderableArea} from "../commonStyled/RenderableArea";
 
@@ -33,7 +33,7 @@ export const ProcessingSummarySection = ({root, folder, isLoading}) => {
     }, []);
 
     return (
-        <DarkenSection ref={wrapperRef}>
+        <Section ref={wrapperRef}>
             <RenderableArea>
                 <Wrapper>
                     <SectionTitle>
@@ -69,6 +69,6 @@ export const ProcessingSummarySection = ({root, folder, isLoading}) => {
                     </WithProgressLayer>
                 </Wrapper>
             </RenderableArea>
-        </DarkenSection>
+        </Section>
     )
 };

@@ -58,11 +58,10 @@ SummaryAccordion.File = ({item}) => {
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                 <AccordionItemTitle name={item.name}
                                     date={item.lastModifiedDate?.toLocaleString()}
+                                    badge={<ProcessingStatusBadge errors={item.errors}/>}
                 >
                     <InsertDriveFileIcon sx={{fontSize: '30px', color: 'grey'}}/>
                 </AccordionItemTitle>
-
-                <ProcessingStatusBadge errors={item.errors}/>
             </AccordionSummary>
 
             <AccordionDetails sx={{
@@ -74,7 +73,7 @@ SummaryAccordion.File = ({item}) => {
     )
 };
 
-const AccordionItemTitle = ({name, date, children}) => {
+const AccordionItemTitle = ({name, date, children, badge}) => {
     return (
         <ItemTitle>
             {children}
@@ -84,6 +83,9 @@ const AccordionItemTitle = ({name, date, children}) => {
             }}>
                 {name}
             </Typography>
+            <div style={{justifySelf: 'flex-end'}}>
+                {badge}
+            </div>
             <Date>
                 <Typography sx={{
                     fontSize: '20px',

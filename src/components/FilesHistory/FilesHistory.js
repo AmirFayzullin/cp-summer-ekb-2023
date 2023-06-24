@@ -10,7 +10,7 @@ import FilesView from "../FilesZone/FilesView/FilesView";
 import {LoremIpsum} from 'lorem-ipsum';
 import {SectionTitle} from "../commonStyled/SectionTitle";
 import {RenderableArea} from "../commonStyled/RenderableArea";
-import {Section} from "../commonStyled/Section";
+import {DarkenSection, Section} from "../commonStyled/Section";
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -118,7 +118,7 @@ export const FilesHistory = () => {
 
     return (
         <Wrapper>
-            <Section>
+            <DarkenSection>
                 <RenderableArea>
                     <SectionTitle>
                         My files
@@ -132,7 +132,7 @@ export const FilesHistory = () => {
                         {pagesButtons}
                     </PaginationButtons>
                 </RenderableArea>
-            </Section>
+            </DarkenSection>
 
             <ProcessingSummarySection root={processingSummary}
                                       folder={processingSummaryFolder}
