@@ -8,6 +8,7 @@ import FilesZone from "../FilesZone/FilesZone";
 import {ButtonsSection, FilesSendSectionWrapper} from "./styled";
 import TextField from "@mui/material/TextField/TextField";
 import {InfoTooltipServiceContext} from "../../contexts/InfoTooltipServiceContext";
+import {SectionTitle} from "../commonStyled/SectionTitle";
 
 export const FilesSendSection = () => {
     const [files, setFiles] = useState([]);
@@ -40,8 +41,6 @@ export const FilesSendSection = () => {
 
         sendFile({formData})
             .then(res => {
-                console.log(res);
-
                 setInfoTooltipState({
                     isOpen: true,
                     isSuccess: true,
@@ -65,6 +64,10 @@ export const FilesSendSection = () => {
 
     return (
         <FilesSendSectionWrapper>
+            <SectionTitle>
+                Process new file
+            </SectionTitle>
+
             <TextField label='Organization name'
                        variant='outlined'
                        type='text'

@@ -7,7 +7,8 @@ import {ProcessingSummarySection} from "../ProcessingSummarySection/ProcessingSu
 import {buildFileStructureFromFilesList} from "../../utils/buildFileStructureFromFilesList";
 import {PaginationButtons, Wrapper} from "./styled";
 import FilesView from "../FilesZone/FilesView/FilesView";
-import { LoremIpsum  } from 'lorem-ipsum';
+import {LoremIpsum} from 'lorem-ipsum';
+import {SectionTitle} from "../commonStyled/SectionTitle";
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -36,7 +37,6 @@ export const FilesHistory = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const [processingSummary, setProcessingSummary] = useState(null);
-    const [summaryFolder, setSummaryFolder] = useState(null);
 
     useEffect(() => {
         setIsLoadingHistoryList(true);
@@ -95,7 +95,7 @@ export const FilesHistory = () => {
                 const formattedData = res.data.map(file => {
                     const shouldAddErrors = Math.random() > 0.45;
                     return {
-                    ...file,
+                        ...file,
                         lastModifiedDate: new Date(file.created_at),
                         path: file.path === '.' ? "" : file.path,
                         errors: shouldAddErrors ? errors : null,
@@ -113,6 +113,10 @@ export const FilesHistory = () => {
 
     return (
         <Wrapper>
+            <SectionTitle>
+                My files
+            </SectionTitle>
+
             <WithProgressLayer isLoading={isLoadingHistoryList}>
                 <FilesView files={folders} onFileClick={(folder) => openProcessingSummary(folder)}/>
             </WithProgressLayer>
@@ -122,9 +126,7 @@ export const FilesHistory = () => {
             </PaginationButtons>
 
 
-            <WithProgressLayer isLoading={isLoadingProcessingSummary}>
-                {processingSummary && <ProcessingSummarySection root={processingSummary}/> }
-            </WithProgressLayer>
+            <ProcessingSummarySection root={processingSummary} isLoading={isLoadingProcessingSummary}/>
         </Wrapper>
     )
 };

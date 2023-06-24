@@ -109,7 +109,7 @@ const FileErrorsSummary = ({errors}) => {
                         <p>Description</p>
                         <p style={{justifySelf: 'flex-end'}}>Page</p>
                     </ErrorsListTitle>
-                    { errors?.map(error => <Error error={error}/>) }
+                    { errors?.map(error => <Error key={error.description} error={error}/>) }
                 </ErrorsList>
             }
 

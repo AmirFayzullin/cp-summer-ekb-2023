@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {buildFileStructureFromFilesList} from "../../utils/buildFileStructureFromFilesList";
 import {getFiles} from "../../api/files";
 import Button from "@mui/material/Button";
 import {SummaryAccordion} from "./SummaryAccordion/SummaryAccordion";
+import {SectionTitle} from "../commonStyled/SectionTitle";
+import {WithProgressLayer} from "../FilesHistory/FilesHistoryList/WithProgressLayer";
+import {Wrapper} from "./styled";
 
 // const files = [
 //     {
@@ -38,10 +41,31 @@ import {SummaryAccordion} from "./SummaryAccordion/SummaryAccordion";
 // ];
 // const root = buildFileStructureFromFilesList(files);
 
-export const ProcessingSummarySection = ({root}) => {
+export const ProcessingSummarySection = ({root, isLoading}) => {
+
+    const wrapperRef = useRef();
+
+    useEffect(() => {
+        if (!wrapperRef.current || !isLoading) return;
+
+        setTimeout(() => {
+            window.scrollBy({
+                top: wrapperRef.current.getBoundingClientRect().top,
+                behavior: 'smooth'
+            })
+        });
+    }, [isLoading]);
     return (
-        <>
-            <SummaryAccordion item={root} />
-        </>
+        <Wrapper ref={wrapperRef}>
+            {
+                root &&
+                <SectionTitle>
+                    Summary
+                </SectionTitle>
+            }
+            <WithProgressLayer isLoading={isLoading}>
+                {root && <SummaryAccordion item={root}/>}
+            </WithProgressLayer>
+        </Wrapper>
     )
 };

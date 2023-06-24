@@ -6,4 +6,6 @@ export const Page = styled.div`
     flex-direction: column;
     display: flex;
     align-items: center;
+    padding-bottom: 40px;
+    background: rgba(220, 220, 220, 0.5);
 `;

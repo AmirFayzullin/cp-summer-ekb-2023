@@ -45,7 +45,7 @@ const File = ({file, onFileClick}) => {
         <div className={s.wrapper}
              onClick={handleFileClick}
         >
-            <FolderZipIcon sx={{fontSize: '50px', color: 'grey'}}/>
+            <FolderZipIcon sx={{fontSize: '50px', color: '#f1c300'}}/>
             <p className={s.label}>{name}</p>
             <p className={cn(s.label, s.date)}>{file.lastModifiedDate.toLocaleString()}</p>
         </div>
