@@ -20,12 +20,10 @@ export const login = async ({email, password}) => {
     return res.user;
 };
 
-export const checkToken = async ({token}) => {
-    const res = await baseApi.post('auth/me', {
+export const checkToken = ({token}) => {
+    return baseApi.post('auth/me', {
         headers: {
             Authorization: `Bearer ${token}`
         }
     }).json();
-
-    return res.user;
 };

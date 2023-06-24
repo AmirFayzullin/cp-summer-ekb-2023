@@ -82,7 +82,7 @@ export const FilesSendSection = () => {
                         }
                 >
                     <label htmlFor='file-input'>
-                        Add file
+                        {files.length === 0 ? 'Add file' : 'Another file'}
                         <input type="file"
                                id="file-input"
                                style={{display: "none"}}

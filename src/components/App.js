@@ -12,6 +12,7 @@ import {store} from "../redux/store";
 import {createTheme} from "@mui/material";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import {InfoTooltipService} from "./common/services/InfoTooltipService";
+import {UserDataContext} from "../contexts/UserDataContext";
 
 const mdTheme = createTheme({
 
@@ -23,67 +24,69 @@ const mdTheme = createTheme({
 });
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userData, setUserData] = useState(null);
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const handleLogin = (userData) => {
-    setUserData(userData);
-    setIsLoggedIn(true);
-    navigate('/');
-  };
+    const handleLogin = (userData) => {
+        setUserData(userData);
+        setIsLoggedIn(true);
+        navigate('/');
+    };
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) return;
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) return;
 
-    checkToken({token})
-        .then(user => {
-          handleLogin(user);
-        })
-        .catch(err => {
-          console.log(err);
-        })
-  }, []);
+        checkToken({token})
+            .then(user => {
+                handleLogin(user);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, []);
 
-  const logout = () => {
-    setIsLoggedIn(false);
-    setUserData(null);
-    localStorage.removeItem('token');
-    navigate('/sign-in');
-  };
+    const logout = () => {
+        setIsLoggedIn(false);
+        setUserData(null);
+        localStorage.removeItem('token');
+        navigate('/sign-in');
+    };
 
-  return (
-      <ThemeProvider theme={mdTheme}>
-          <Provider store={store}>
-              <InfoTooltipService>
-                  <Page>
-                      <Routes>
-                          <Route path="/sign-in"
-                                 element={
-                                     <Login handleLogin={handleLogin}/>
-                                 }
-                          />
-                          <Route path="/sign-up"
-                                 element={
-                                     <Register handleLogin={handleLogin}/>
-                                 }
-                          />
-                          <Route path='/*'
-                                 element={
-                                     <ProtectedRoute Component={Main}
-                                                     isLoggedIn={isLoggedIn}
-                                                     logout={logout}
-                                     />
-                                 }
-                          />
-                      </Routes>
-                  </Page>
-              </InfoTooltipService>
-          </Provider>
-      </ThemeProvider>
-  );
+    return (
+        <ThemeProvider theme={mdTheme}>
+            <Provider store={store}>
+                <UserDataContext.Provider value={userData}>
+                    <InfoTooltipService>
+                        <Page>
+                            <Routes>
+                                <Route path="/sign-in"
+                                       element={
+                                           <Login handleLogin={handleLogin}/>
+                                       }
+                                />
+                                <Route path="/sign-up"
+                                       element={
+                                           <Register handleLogin={handleLogin}/>
+                                       }
+                                />
+                                <Route path='/*'
+                                       element={
+                                           <ProtectedRoute Component={Main}
+                                                           isLoggedIn={isLoggedIn}
+                                                           logout={logout}
+                                           />
+                                       }
+                                />
+                            </Routes>
+                        </Page>
+                    </InfoTooltipService>
+                </UserDataContext.Provider>
+            </Provider>
+        </ThemeProvider>
+    );
 }
 
 export default App;

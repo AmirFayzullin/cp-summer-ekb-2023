@@ -6,7 +6,7 @@ export const NavWrapper = styled.div`
     padding: 0 60px;
 `;
 
-export const LogoutWrapper = styled.div`
+export const ProfileWrapper = styled.div`
     justify-self: flex-end;
 `;
 
