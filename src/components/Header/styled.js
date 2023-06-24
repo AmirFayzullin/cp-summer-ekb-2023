@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const NavWrapper = styled.div`
-    justify-self: center;
+    display: grid;
+    grid-auto-flow: column;
+    padding: 0 60px;
 `;
 
 export const LogoutWrapper = styled.div`
