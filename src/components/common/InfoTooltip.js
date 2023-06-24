@@ -19,9 +19,7 @@ export const InfoTooltip = ({isOpen, close, isSuccess, message}) => {
                     {
                         isSuccess &&
                         <Grow in={isSuccess} timeout={1500}>
-                            <CheckIcon style={{verticalAlign: "middle", color: '#009c8e', fontSize: "8.5em"}}
-                                       color='success'
-                            />
+                            <CheckIcon style={{verticalAlign: "middle", color: '#009c8e', fontSize: "8.5em"}}/>
                         </Grow>
                     }
 

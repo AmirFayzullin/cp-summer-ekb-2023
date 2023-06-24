@@ -7,6 +7,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import {Date, ItemTitle} from "./styled";
 import FolderZipIcon from '@mui/icons-material/FolderZip';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import {ProcessingStatusBadge} from "../../ProcessingStatusBadge/ProcessingStatusBadge";
 
 export const SummaryAccordion = ({item}) => {
     switch (item.isFolder) {
@@ -58,6 +59,8 @@ SummaryAccordion.File = ({item}) => {
                 >
                     <InsertDriveFileIcon sx={{fontSize: '30px', color: 'grey'}}/>
                 </AccordionItemTitle>
+
+                <ProcessingStatusBadge errors={item.errors}/>
             </AccordionSummary>
 
             <AccordionDetails sx={{
