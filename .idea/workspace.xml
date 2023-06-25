@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e685088-7693-48c5-93e1-6bf74dc89b95" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/SearchBar/SearchBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchBar/styled.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/files.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/files.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/styled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/SummaryAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/SummaryAccordion.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,55 +18,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/SearchBar/SearchBar.js">
+        <entry file="file://$PROJECT_DIR$/src/components/NewFileProcessing/NewFileProcessing.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+            <state relative-caret-position="102">
+              <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
               <folding>
-                <element signature="e#0#48#0" expanded="true" />
+                <element signature="e#0#70#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="498">
+              <caret line="150" column="36" lean-forward="true" selection-start-line="150" selection-start-column="36" selection-end-line="150" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js">
+        <entry file="file://$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39">
-              <caret line="25" column="3" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+            <state relative-caret-position="327">
+              <caret line="53" column="51" lean-forward="true" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
               <folding>
-                <element signature="e#0#51#0" expanded="true" />
+                <element signature="e#0#49#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/files.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="30" column="18" lean-forward="true" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Header/Header.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="32" column="17" lean-forward="true" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#58#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Header/styled.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -132,23 +109,23 @@
         <option value="$PROJECT_DIR$/src/components/FilesHistory/styled.js" />
         <option value="$PROJECT_DIR$/src/components/common/services/InfoTooltipService.js" />
         <option value="$PROJECT_DIR$/src/api/baseInstance.js" />
-        <option value="$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx" />
         <option value="$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/styled.js" />
         <option value="$PROJECT_DIR$/src/contexts/FileCallbacksContext.js" />
-        <option value="$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/SummaryAccordion.js" />
         <option value="$PROJECT_DIR$/src/components/ProcessingSummarySection/ProcessingSummarySection.js" />
         <option value="$PROJECT_DIR$/src/components/Login/Login.js" />
         <option value="$PROJECT_DIR$/src/components/Register/Register.js" />
         <option value="$PROJECT_DIR$/src/components/commonStyled/SectionTitle.js" />
         <option value="$PROJECT_DIR$/src/components/FilesSendSection/styled.js" />
         <option value="$PROJECT_DIR$/src/components/FilesZone/FilesView/FilesView.module.css" />
-        <option value="$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js" />
         <option value="$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.module.css" />
         <option value="$PROJECT_DIR$/src/components/SearchBar/styled.js" />
         <option value="$PROJECT_DIR$/src/components/SearchBar/SearchBar.js" />
         <option value="$PROJECT_DIR$/src/components/Header/styled.js" />
         <option value="$PROJECT_DIR$/src/api/files.js" />
         <option value="$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js" />
+        <option value="$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/SummaryAccordion.js" />
+        <option value="$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js" />
+        <option value="$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx" />
       </list>
     </option>
   </component>
@@ -187,6 +164,27 @@
               <item name="cp-summer-ekb-2023" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cp-summer-ekb-2023" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cp-summer-ekb-2023" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cp-summer-ekb-2023" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cp-summer-ekb-2023" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="commonStyled" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cp-summer-ekb-2023" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cp-summer-ekb-2023" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="FilesHistory" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cp-summer-ekb-2023" type="b2602c69:ProjectViewProjectNode" />
@@ -255,7 +253,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103402000" />
+    <option name="totallyTimeSpent" value="105711000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -347,23 +345,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="91" column="66" selection-start-line="91" selection-start-column="66" selection-end-line="91" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/NewFileProcessing/NewFileProcessing.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#70#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/commonStyled/Page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -527,16 +508,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/SummaryAccordion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="130" column="65" selection-start-line="130" selection-start-column="45" selection-end-line="130" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/styled.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="413">
@@ -555,13 +526,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/commonStyled/SectionTitle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -606,22 +570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-            <element signature="e#676#700#0" />
-            <element signature="e#1169#1177#0" />
-            <element signature="e#1422#1586#0" />
-            <element signature="e#1627#1850#0" />
-            <element signature="e#4230#5550#0" />
-            <element signature="e#5568#9033#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/FilesZone/FilesZone.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -633,23 +581,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FilesSendSection/styled.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="30" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -691,6 +622,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="25" column="3" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/files.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="30" column="18" lean-forward="true" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header/Header.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
@@ -708,19 +656,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/files.js">
+    <entry file="file://$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/SummaryAccordion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="30" column="18" lean-forward="true" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        <state relative-caret-position="413">
+          <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js">
+    <entry file="file://$PROJECT_DIR$/src/components/commonStyled/Page.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="25" column="3" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+        <state relative-caret-position="136">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/commonStyled/SectionTitle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/NewFileProcessing/NewFileProcessing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FilesSendSection/styled.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="150" column="36" lean-forward="true" selection-start-line="150" selection-start-column="36" selection-end-line="150" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="53" column="51" lean-forward="true" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -129,7 +129,6 @@ const FileErrorsSummary = ({errors, deleteError}) => {
 
 const Error = ({error}) => {
     const {toggleErrorPresence} = useContext(FileCallbacksContext);
-    const splitted = error.description.split('\n');
 
     return (
         <ErrorItem>
@@ -139,9 +138,7 @@ const Error = ({error}) => {
                 </Tooltip>
                 {error.name}
             </NameField>
-            <div>
-                {splitted.map(string => <p>{string}</p>)}
-            </div>
+            <ErrorsFormatter error={error}/>
             <p style={{justifySelf: 'flex-end'}}>{error.page + 1}</p>
         </ErrorItem>
     )
@@ -158,3 +155,22 @@ const Success = () => {
     )
 };
 
+
+const ErrorsFormatter = ({error}) => {
+    const formatted = error.description.split('\n')
+        .filter(error => error.length !== 0)
+        .map(error => error.trim());
+
+    const parsed = formatted.map(error => {
+        if (error.startsWith('-')) {
+            return <li>{error}</li>
+        }
+        return <p>{error}</p>;
+    });
+
+    return (
+        <ul>
+            {parsed}
+        </ul>
+    )
+};

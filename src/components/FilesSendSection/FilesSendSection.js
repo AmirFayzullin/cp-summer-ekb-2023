@@ -20,6 +20,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Collapse from '@mui/material/Collapse';
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
+import {RenderableArea} from "../commonStyled/RenderableArea";
 
 const MODES = [
     {
@@ -110,12 +111,12 @@ export const FilesSendSection = () => {
 
         formData.append('file', files[0]);
         formData.append('extra_name', orgName);
-        formData.append('mode', mode);
+        // formData.append('mode', mode);
 
         if (mode === MODES[1].value) {
-            formData.append('image_parser', imageParser);
-            formData.append('validator', validator);
-            formData.append('usage_level', usageLevel);
+            // formData.append('image_parser', imageParser);
+            // formData.append('validator', validator);
+            // formData.append('usage_level', usageLevel);
         }
 
         setIsLoading(true);
@@ -144,31 +145,31 @@ export const FilesSendSection = () => {
     };
 
     return (
-        <FilesSendSectionWrapper>
-            <SectionTitle>
-                Process new file
-            </SectionTitle>
+        <RenderableArea>
+            <FilesSendSectionWrapper>
+                <SectionTitle>
+                    Process new file
+                </SectionTitle>
 
-            <FormFieldsWrapper>
-                <div>
-                    <TextField label='Organization name'
-                               variant='outlined'
-                               type='text'
-                               name='Organization name'
-                               value={orgName}
-                               sx={{
-                                   width: '100%',
-                                   marginBottom: '10px'
-                               }}
-                               onChange={(evt) => setOrgName(evt.target.value)}
-                    />
-                    <FilesZone files={files}
-                               setFiles={handleFilesDrop}
-                    />
-                </div>
+                <FormFieldsWrapper>
+                    <div>
+                        <TextField label='Organization name'
+                                   variant='outlined'
+                                   type='text'
+                                   name='Organization name'
+                                   value={orgName}
+                                   sx={{
+                                       width: '100%',
+                                       marginBottom: '10px'
+                                   }}
+                                   onChange={(evt) => setOrgName(evt.target.value)}
+                        />
+                        <FilesZone files={files}
+                                   setFiles={handleFilesDrop}
+                        />
+                    </div>
 
-                <div>
-                    <FormPartSection>
+                    <div>
                         <FormControl>
                             <FormLabel id="radio-buttons-group-label">
                                 Mode
@@ -196,97 +197,104 @@ export const FilesSendSection = () => {
                                 }
                             </RadioGroup>
                         </FormControl>
-                    </FormPartSection>
 
-                    <FormPartSection>
-                        <Collapse in={+mode === MODES[1].value}>
-                            <FormControl>
-                                <FormLabel id="advanced-options-group-label">
-                                    Advanced options
-                                </FormLabel>
-                                <div style={{display: 'flex', marginTop:'10px', gap: '10px', justifyContent: 'center'}}>
-                                    <FormControl>
-                                        <InputLabel id="image-parser-select-label">Image parser</InputLabel>
-                                        <Select
-                                            labelId="image-parser-select-label"
-                                            value={imageParser}
-                                            label="Image parser"
-                                            onChange={(evt) => setImageParser(evt.target.value)}
-                                        >
-                                            {
-                                                IMAGE_PARSERS.map(parser => <MenuItem key={parser.value} value={parser.value}>{parser.name}</MenuItem>)
-                                            }
-                                        </Select>
-                                    </FormControl>
+                        <FormPartSection>
+                            <Collapse in={+mode === MODES[1].value}>
+                                <FormControl>
+                                    <FormLabel id="advanced-options-group-label">
+                                        Advanced options
+                                    </FormLabel>
+                                    <div style={{
+                                        display: 'flex',
+                                        marginTop: '10px',
+                                        gap: '10px',
+                                        justifyContent: 'center'
+                                    }}>
+                                        <FormControl>
+                                            <InputLabel id="image-parser-select-label">Image parser</InputLabel>
+                                            <Select
+                                                labelId="image-parser-select-label"
+                                                value={imageParser}
+                                                label="Image parser"
+                                                onChange={(evt) => setImageParser(evt.target.value)}
+                                            >
+                                                {
+                                                    IMAGE_PARSERS.map(parser => <MenuItem key={parser.value}
+                                                                                          value={parser.value}>{parser.name}</MenuItem>)
+                                                }
+                                            </Select>
+                                        </FormControl>
 
-                                    <FormControl>
-                                        <InputLabel id="validator-select-label">Validator</InputLabel>
-                                        <Select
-                                            labelId="validator-select-label"
-                                            value={validator}
-                                            label="Validator"
-                                            onChange={(evt) => setValidator(evt.target.value)}
-                                        >
-                                            {
-                                                VALIDATORS.map(validator => <MenuItem key={validator.value} value={validator.value}>{validator.name}</MenuItem>)
-                                            }
-                                        </Select>
-                                    </FormControl>
-                                </div>
+                                        <FormControl>
+                                            <InputLabel id="validator-select-label">Validator</InputLabel>
+                                            <Select
+                                                labelId="validator-select-label"
+                                                value={validator}
+                                                label="Validator"
+                                                onChange={(evt) => setValidator(evt.target.value)}
+                                            >
+                                                {
+                                                    VALIDATORS.map(validator => <MenuItem key={validator.value}
+                                                                                          value={validator.value}>{validator.name}</MenuItem>)
+                                                }
+                                            </Select>
+                                        </FormControl>
+                                    </div>
 
-                                <FormPartSection>
-                                    <Box sx={{ width: 300 }}>
-                                        <FormLabel id="usage-level-slider">
-                                            Processing depth
-                                        </FormLabel>
-                                        <Slider
-                                            aria-label="Custom marks"
-                                            min={USAGE_LEVELS[0].value}
-                                            max={USAGE_LEVELS[USAGE_LEVELS.length - 1].value}
-                                            defaultValue={USAGE_LEVELS[0].value}
-                                            getAriaValueText={(value) => value}
-                                            step={null}
-                                            value={usageLevel}
-                                            onChange={(evt, newValue) => setUsageLevel(newValue)}
-                                            valueLabelDisplay="auto"
-                                            marks={USAGE_LEVELS}
-                                            aria-labelledby="usage-level-slider"
-                                        />
-                                    </Box>
-                                </FormPartSection>
-                            </FormControl>
-                        </Collapse>
-                    </FormPartSection>
-                </div>
-            </FormFieldsWrapper>
+                                    <FormPartSection>
+                                        <Box sx={{width: 300}}>
+                                            <FormLabel id="usage-level-slider">
+                                                Processing depth
+                                            </FormLabel>
+                                            <Slider
+                                                aria-label="Custom marks"
+                                                min={USAGE_LEVELS[0].value}
+                                                max={USAGE_LEVELS[USAGE_LEVELS.length - 1].value}
+                                                defaultValue={USAGE_LEVELS[0].value}
+                                                getAriaValueText={(value) => value}
+                                                step={null}
+                                                value={usageLevel}
+                                                onChange={(evt, newValue) => setUsageLevel(newValue)}
+                                                valueLabelDisplay="auto"
+                                                marks={USAGE_LEVELS}
+                                                aria-labelledby="usage-level-slider"
+                                            />
+                                        </Box>
+                                    </FormPartSection>
+                                </FormControl>
+                            </Collapse>
+                        </FormPartSection>
+                    </div>
+                </FormFieldsWrapper>
 
 
-            <ButtonsSection>
-                <Button variant='contained'
-                        endIcon={
-                            <AddIcon/>
-                        }
-                >
-                    <label htmlFor='file-input'>
-                        {files.length === 0 ? 'Add file' : 'Another file'}
-                        <input type="file"
-                               id="file-input"
-                               style={{display: "none"}}
-                               onChange={handleChange}
-                        />
-                    </label>
-                </Button>
+                <ButtonsSection>
+                    <Button variant='contained'
+                            endIcon={
+                                <AddIcon/>
+                            }
+                    >
+                        <label htmlFor='file-input'>
+                            {files.length === 0 ? 'Add file' : 'Another file'}
+                            <input type="file"
+                                   id="file-input"
+                                   style={{display: "none"}}
+                                   onChange={handleChange}
+                            />
+                        </label>
+                    </Button>
 
-                <LoadingButton variant='contained'
-                               loading={isLoading}
-                               loadingPosition='end'
-                               disabled={files.length < 1 || orgName.length < 1 || isLoading}
-                               onClick={handleSubmit}
-                               endIcon={<CloudUploadIcon/>}
-                >
-                    {isLoading ? 'Uploading' : 'Upload'}
-                </LoadingButton>
-            </ButtonsSection>
-        </FilesSendSectionWrapper>
+                    <LoadingButton variant='contained'
+                                   loading={isLoading}
+                                   loadingPosition='end'
+                                   disabled={files.length < 1 || orgName.length < 1 || isLoading}
+                                   onClick={handleSubmit}
+                                   endIcon={<CloudUploadIcon/>}
+                    >
+                        {isLoading ? 'Uploading' : 'Upload'}
+                    </LoadingButton>
+                </ButtonsSection>
+            </FilesSendSectionWrapper>
+        </RenderableArea>
     )
 };

@@ -57,10 +57,12 @@ const File = ({file, onFileClick}) => {
             </p>
 
             {
-                hasPrec &&
+                hasPrec ?
                     <Tooltip title="Precision">
                         <p className={s.label}>{file.precision}%</p>
                     </Tooltip>
+                    :
+                    <div></div>
             }
 
             <p className={cn(s.label, s.date)}>{file.lastModifiedDate.toLocaleString()}</p>

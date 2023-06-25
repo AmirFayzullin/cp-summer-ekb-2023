@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const FilesSendSectionWrapper = styled.div`
     width: 100%;
     display: grid;
+    grid-template-columns: 100%;
     grid-auto-rows: auto;
     grid-gap: 10px; 
     justify-content: center;   
