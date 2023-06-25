@@ -25,3 +25,11 @@ export const getFolderFiles = ({folderId}) => {
         }
     }).json();
 };
+
+export const deleteError = ({errorId}) => {
+    return baseApi.delete(`file/error/${errorId}`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    }).json();
+};

@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {useEffect} from "react";
 import {WithProgressLayer} from "../common/WithProgressLayer/WithProgressLayer";
-import {getFolderFiles, getFolders} from "../../api/files";
+import {deleteError, getFolderFiles, getFolders} from "../../api/files";
 import Button from "@mui/material/Button";
 import {ProcessingSummarySection} from "../ProcessingSummarySection/ProcessingSummarySection";
 import {buildFileStructureFromFilesList} from "../../utils/buildFileStructureFromFilesList";
@@ -11,6 +11,7 @@ import {LoremIpsum} from 'lorem-ipsum';
 import {SectionTitle} from "../commonStyled/SectionTitle";
 import {RenderableArea} from "../commonStyled/RenderableArea";
 import {DarkenSection, Section} from "../commonStyled/Section";
+import {FileCallbacksContext} from '../../contexts/FileCallbacksContext'
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -41,27 +42,30 @@ export const FilesHistory = () => {
     const [processingSummary, setProcessingSummary] = useState(null);
     const [processingSummaryFolder, setProcessingSummaryFolder] = useState(null);
 
+    const [errorsToDelete, setErrorsToDelete] = useState([]);
+
+    const [isDeleting, setIsDeleting] = useState(false);
+
     useEffect(() => {
         setIsLoadingHistoryList(true);
 
-        setTimeout(() => {
-            getFolders({page: currentPage})
-                .then(res => {
-                    setFolders(res.data.data.map(folder => ({
-                        ...folder,
-                        name: folder.folder_name,
-                        lastModifiedDate: new Date(folder.created_at),
-                    })));
-                    setPagesCount(res.data.last_page);
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-                .finally(() => {
-                    setIsLoadingHistoryList(false);
-                })
-        }, 1000);
+        getFolders({page: currentPage})
+            .then(res => {
+                setFolders(res.data.data.map(folder => ({
+                    ...folder,
+                    name: folder.folder_name,
+                    lastModifiedDate: new Date(folder.created_at),
+                })));
+                setPagesCount(res.data.last_page);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+            .finally(() => {
+                setIsLoadingHistoryList(false);
+            })
     }, [currentPage]);
+
 
     const openProcessingSummary = (folder) => {
         setIsLoadingProcessingSummary(true);
@@ -70,21 +74,17 @@ export const FilesHistory = () => {
 
         getFolderFiles({folderId: folder.id})
             .then(res => {
-                const errorsCount = +((Math.random() * 10).toFixed(0));
-
-                let errors = [];
-
-                for (let i = 0; i < errorsCount; i++) errors.push(getErrorSample());
-
                 const formattedData = res.data.map(file => {
-                    const shouldAddErrors = Math.random() > 0.45;
                     return {
                         ...file,
                         lastModifiedDate: new Date(file.created_at),
                         path: file.path === '.' ? "" : file.path,
-                        errors: shouldAddErrors ? errors : null,
+                        errors: file.errors,
                     }
                 });
+
+                setErrorsToDelete([]);
+                setIsDeleting(false);
                 setProcessingSummary(buildFileStructureFromFilesList(folder, formattedData))
             })
             .catch(err => {
@@ -93,6 +93,42 @@ export const FilesHistory = () => {
             .finally(() => {
                 setIsLoadingProcessingSummary(false);
             })
+    };
+
+    const toggleErrorPresence = ({errorId}) => {
+        setErrorsToDelete((errors) => {
+            const isPresented = errors.findIndex(e => e === errorId) > -1;
+
+            let res = [];
+
+            if (isPresented) {
+                res = errors.filter(e => e !== errorId);
+            } else {
+                res = [...errors, errorId]
+            }
+
+            console.log(res);
+
+            return res;
+        })
+    };
+
+    const confirmDelete = () => {
+        setIsDeleting(true);
+
+        const promises = errorsToDelete.map(errorId => deleteError({errorId}));
+
+        const reopenFolder = () => openProcessingSummary(processingSummaryFolder);
+
+        Promise.all([promises])
+            .then(() => {
+                setErrorsToDelete([]);
+                reopenFolder();
+            })
+            .finally(() => {
+                setIsDeleting(false);
+            })
+
     };
 
     const pagesButtons = [];
@@ -117,27 +153,30 @@ export const FilesHistory = () => {
     }
 
     return (
-        <Wrapper>
-            <DarkenSection>
-                <RenderableArea>
-                    <SectionTitle>
-                        My files
-                    </SectionTitle>
+        <FileCallbacksContext.Provider value={{toggleErrorPresence, isDeleting, errorsToDelete, confirmDelete}}>
+            <Wrapper>
+                <DarkenSection>
+                    <RenderableArea>
+                        <SectionTitle>
+                            My files
+                        </SectionTitle>
 
-                    <WithProgressLayer isLoading={isLoadingHistoryList}>
-                        <FilesView files={folders} onFileClick={(folder) => openProcessingSummary(folder)}/>
-                    </WithProgressLayer>
+                        <WithProgressLayer isLoading={isLoadingHistoryList}>
+                            <FilesView files={folders} onFileClick={(folder) => openProcessingSummary(folder)}/>
+                        </WithProgressLayer>
 
-                    <PaginationButtons>
-                        {pagesButtons}
-                    </PaginationButtons>
-                </RenderableArea>
-            </DarkenSection>
+                        <PaginationButtons>
+                            {pagesButtons}
+                        </PaginationButtons>
+                    </RenderableArea>
+                </DarkenSection>
 
-            <ProcessingSummarySection root={processingSummary}
-                                      folder={processingSummaryFolder}
-                                      isLoading={isLoadingProcessingSummary}
-            />
-        </Wrapper>
+                <ProcessingSummarySection root={processingSummary}
+                                          folder={processingSummaryFolder}
+                                          isLoading={isLoadingProcessingSummary}
+                />
+            </Wrapper>
+        </FileCallbacksContext.Provider>
+
     )
 };

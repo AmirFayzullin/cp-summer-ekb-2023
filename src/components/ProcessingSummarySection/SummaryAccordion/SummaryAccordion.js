@@ -1,17 +1,22 @@
 import React, {useContext} from 'react';
+import {IconButton} from '@mui/material';
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from "@mui/material/Typography";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import {Date, ErrorItem, ErrorsList, ErrorsListTitle, ItemTitle, SuccessWrapper} from "./styled";
+import {Date, ErrorItem, ErrorsList, ErrorsListTitle, ItemTitle, NameField, SuccessWrapper} from "./styled";
 import FolderZipIcon from '@mui/icons-material/FolderZip';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import {ProcessingStatusBadge} from "../../ProcessingStatusBadge/ProcessingStatusBadge";
 import CheckIcon from "@mui/icons-material/Check";
 import Grow from "@mui/material/Grow/Grow";
+import {FileCallbacksContext} from "../../../contexts/FileCallbacksContext";
+import Checkbox from "@mui/material/Checkbox";
+import Tooltip from "@mui/material/Tooltip";
 
 export const SummaryAccordion = ({item}) => {
+
     switch (item.isFolder) {
         case true:
             return (
@@ -32,9 +37,10 @@ SummaryAccordion.Folder = ({item}) => {
 
     return (
         <Accordion sx={{
-            boxShadow: 'none',
-            border: 'solid 1px lightgrey'
-        }}>
+                        boxShadow: 'none',
+                        border: 'solid 1px lightgrey'
+                   }}
+        >
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                 <AccordionItemTitle name={item.name}
                                     date={item.lastModifiedDate?.toLocaleString()}>
@@ -67,7 +73,7 @@ SummaryAccordion.File = ({item}) => {
             <AccordionDetails sx={{
                 padding: '10px'
             }}>
-                <FileErrorsSummary errors={item.errors}/>
+                <FileErrorsSummary errors={item.errors} />
             </AccordionDetails>
         </Accordion>
     )
@@ -98,7 +104,7 @@ const AccordionItemTitle = ({name, date, children, badge}) => {
     )
 };
 
-const FileErrorsSummary = ({errors}) => {
+const FileErrorsSummary = ({errors, deleteError}) => {
     const hasErrors = errors?.length > 0;
 
     return (
@@ -111,22 +117,32 @@ const FileErrorsSummary = ({errors}) => {
                         <p>Description</p>
                         <p style={{justifySelf: 'flex-end'}}>Page</p>
                     </ErrorsListTitle>
-                    { errors?.map(error => <Error key={error.description} error={error}/>) }
+                    {errors?.map(error => <Error deleteError={() => deleteError({errorId: error.id})} key={error.id}
+                                                 error={error}/>)}
                 </ErrorsList>
             }
 
-            {!hasErrors && <Success />}
+            {!hasErrors && <Success/>}
         </>
     )
 };
 
 const Error = ({error}) => {
+    const {toggleErrorPresence} = useContext(FileCallbacksContext);
+    const splitted = error.description.split('\n');
 
     return (
         <ErrorItem>
-            <p>{error.name}</p>
-            <p>{error.description}</p>
-            <p style={{justifySelf: 'flex-end'}}>{error.page}</p>
+            <NameField>
+                <Tooltip title={'Mark as correct'}>
+                    <Checkbox onChange={() => {toggleErrorPresence({errorId: error.id})}}/>
+                </Tooltip>
+                {error.name}
+            </NameField>
+            <div>
+                {splitted.map(string => <p>{string}</p>)}
+            </div>
+            <p style={{justifySelf: 'flex-end'}}>{error.page + 1}</p>
         </ErrorItem>
     )
 };

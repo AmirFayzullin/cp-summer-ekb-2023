@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {SummaryAccordion} from "./SummaryAccordion/SummaryAccordion";
 import {SectionTitle} from "../commonStyled/SectionTitle";
 import {WithProgressLayer} from "../common/WithProgressLayer/WithProgressLayer";
@@ -6,12 +6,14 @@ import {PrecisionBadge, Wrapper} from "./styled";
 import {DarkenSection, Section} from "../commonStyled/Section";
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import {RenderableArea} from "../commonStyled/RenderableArea";
+import DeleteIcon from '@mui/icons-material/Delete';
+import LoadingButton from "@mui/lab/LoadingButton";
+import {FileCallbacksContext} from "../../contexts/FileCallbacksContext";
 
 export const ProcessingSummarySection = ({root, folder, isLoading}) => {
-
     const wrapperRef = useRef();
 
-    const [accuracy, setAccuracy] = useState(100);
+    const {isDeleting, errorsToDelete, confirmDelete} = useContext(FileCallbacksContext);
 
     useEffect(() => {
         if (!wrapperRef.current || !isLoading) return;
@@ -23,14 +25,6 @@ export const ProcessingSummarySection = ({root, folder, isLoading}) => {
             })
         });
     }, [isLoading]);
-
-    useEffect(() => {
-        const id = setInterval(() => {
-            //setAccuracy(a => (a + 1)%100);
-        }, 200);
-
-        return () => clearInterval(id);
-    }, []);
 
     return (
         <Section ref={wrapperRef}>
@@ -50,7 +44,24 @@ export const ProcessingSummarySection = ({root, folder, isLoading}) => {
                                             Precision {folder.precision}
                                         </p>
                                     </PrecisionBadge>
-                                    <SummaryAccordion item={root}/>
+                                    <SummaryAccordion item={root} />
+                                    <div style={{
+                                        width: '100%',
+                                        display: "flex",
+                                        justifyContent: 'center',
+                                        marginTop: '10px'
+                                    }}>
+                                        <LoadingButton startIcon={<DeleteIcon color={isDeleting || errorsToDelete.length < 1 ? 'gray' : 'error'}/>}
+                                                       variant='outlined'
+                                                       loadingPosition='start'
+                                                       color='error'
+                                                       loading={isDeleting}
+                                                       disabled={isDeleting || errorsToDelete.length < 1}
+                                                       onClick={confirmDelete}
+                                        >
+                                            Delete marked errors
+                                        </LoadingButton>
+                                    </div>
                                 </>
                         }
 

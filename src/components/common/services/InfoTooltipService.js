@@ -10,10 +10,10 @@ export const InfoTooltipService = ({children}) => {
     });
 
     const setState = (state) => {
-        setInfoTooltipState({
-            ...infoTooltipState,
+        setInfoTooltipState((prev) => ({
+            ...prev,
             ...state
-        })
+        }))
     };
 
     return (

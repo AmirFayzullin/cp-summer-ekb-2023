@@ -45,7 +45,7 @@ const File = ({file, onFileClick}) => {
         onFileClick(file);
     };
 
-    const prec = file.precision;
+    const hasPrec = file.precision >= 0;
 
     return (
         <div className={s.wrapper}
@@ -57,9 +57,9 @@ const File = ({file, onFileClick}) => {
             </p>
 
             {
-                prec &&
+                hasPrec &&
                     <Tooltip title="Precision">
-                        <p className={s.label}>{prec}%</p>
+                        <p className={s.label}>{file.precision}%</p>
                     </Tooltip>
             }
 
