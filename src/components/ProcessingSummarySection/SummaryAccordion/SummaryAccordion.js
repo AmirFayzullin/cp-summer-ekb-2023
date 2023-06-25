@@ -161,11 +161,11 @@ const ErrorsFormatter = ({error}) => {
         .filter(error => error.length !== 0)
         .map(error => error.trim());
 
-    const parsed = formatted.map(error => {
+    const parsed = formatted.map((error, i) => {
         if (error.startsWith('-')) {
-            return <li>{error}</li>
+            return <li key={i}>{error}</li>
         }
-        return <p>{error}</p>;
+        return <p key={i}>{error}</p>;
     });
 
     return (
