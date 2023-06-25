@@ -20,7 +20,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Collapse from '@mui/material/Collapse';
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 
 const MODES = [
     {
@@ -111,6 +110,13 @@ export const FilesSendSection = () => {
 
         formData.append('file', files[0]);
         formData.append('extra_name', orgName);
+        formData.append('mode', mode);
+
+        if (mode === MODES[1].value) {
+            formData.append('image_parser', imageParser);
+            formData.append('validator', validator);
+            formData.append('usage_level', usageLevel);
+        }
 
         setIsLoading(true);
 

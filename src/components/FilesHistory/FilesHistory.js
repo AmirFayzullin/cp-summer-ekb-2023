@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import {useEffect} from "react";
 import {WithProgressLayer} from "../common/WithProgressLayer/WithProgressLayer";
-import {deleteError, getFolderFiles, getFolders} from "../../api/files";
+import {deleteError, getFolderFiles, getFolders, searchFolders} from "../../api/files";
 import Button from "@mui/material/Button";
 import {ProcessingSummarySection} from "../ProcessingSummarySection/ProcessingSummarySection";
 import {buildFileStructureFromFilesList} from "../../utils/buildFileStructureFromFilesList";
@@ -12,6 +12,7 @@ import {SectionTitle} from "../commonStyled/SectionTitle";
 import {RenderableArea} from "../commonStyled/RenderableArea";
 import {DarkenSection, Section} from "../commonStyled/Section";
 import {FileCallbacksContext} from '../../contexts/FileCallbacksContext'
+import {SearchBar} from "../SearchBar/SearchBar";
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -22,12 +23,6 @@ const lorem = new LoremIpsum({
         max: 16,
         min: 4
     }
-});
-
-const getErrorSample = () => ({
-    name: 'Error name',
-    page: +(Math.random() * 100).toFixed(0),
-    description: lorem.generateWords(+(Math.random() * 50).toFixed(0))
 });
 
 export const FilesHistory = () => {
@@ -46,11 +41,14 @@ export const FilesHistory = () => {
 
     const [isDeleting, setIsDeleting] = useState(false);
 
+    const [searchText, setSearchText] = useState('');
+
     useEffect(() => {
         setIsLoadingHistoryList(true);
 
-        getFolders({page: currentPage})
-            .then(res => {
+        const promise = searchText.length > 0 ? searchFolders({name: searchText, page: currentPage}) : getFolders({page: currentPage});
+
+            promise.then(res => {
                 setFolders(res.data.data.map(folder => ({
                     ...folder,
                     name: folder.folder_name,
@@ -64,7 +62,8 @@ export const FilesHistory = () => {
             .finally(() => {
                 setIsLoadingHistoryList(false);
             })
-    }, [currentPage]);
+    }, [currentPage, searchText]);
+
 
 
     const openProcessingSummary = (folder) => {
@@ -131,6 +130,11 @@ export const FilesHistory = () => {
 
     };
 
+    const handleSearch = ({name}) => {
+        setSearchText(name);
+        setCurrentPage(1);
+    };
+
     const pagesButtons = [];
 
     for (let pageNumber = 1; pageNumber <= pagesCount; pageNumber++) {
@@ -160,6 +164,9 @@ export const FilesHistory = () => {
                         <SectionTitle>
                             My files
                         </SectionTitle>
+
+
+                        <SearchBar onSearch={handleSearch}/>
 
                         <WithProgressLayer isLoading={isLoadingHistoryList}>
                             <FilesView files={folders} onFileClick={(folder) => openProcessingSummary(folder)}/>

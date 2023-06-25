@@ -33,3 +33,11 @@ export const deleteError = ({errorId}) => {
         }
     }).json();
 };
+
+export const searchFolders = ({name, page}) => {
+    return baseApi.get(`search/folders?text=${name}&page=${page}`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    }).json();
+};
