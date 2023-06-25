@@ -16,4 +16,17 @@ export const ButtonsSection = styled.div`
     grid-gap: 10px;
     width: 50%;
     justify-self: center;
+    margin-top: 20px;
+`;
+
+export const FormPartSection = styled.div`
+    margin-top: 20px;
+`;
+
+export const FormFieldsWrapper = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template: auto / 75% 35%;
+    grid-gap: 20px; 
+    justify-content: center;   
 `;

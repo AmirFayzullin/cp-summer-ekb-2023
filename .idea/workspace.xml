@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e685088-7693-48c5-93e1-6bf74dc89b95" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/contexts/FileCallbacksContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/baseInstance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/baseInstance.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/files.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/files.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProcessingSummarySection/ProcessingSummarySection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProcessingSummarySection/ProcessingSummarySection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/SummaryAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/SummaryAccordion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/styled.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/services/InfoTooltipService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/services/InfoTooltipService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FilesSendSection/styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilesSendSection/styled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commonStyled/SectionTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commonStyled/SectionTitle.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,68 +19,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="147" column="56" lean-forward="true" selection-start-line="147" selection-start-column="56" selection-end-line="147" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+                <element signature="e#4230#5550#0" />
+                <element signature="e#5568#9033#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js">
+        <entry file="file://$PROJECT_DIR$/src/components/FilesSendSection/styled.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="116" column="16" lean-forward="true" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ProcessingSummarySection/ProcessingSummarySection.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="51" column="57" lean-forward="true" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
-              <folding>
-                <element signature="e#0#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/SummaryAccordion.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="130" column="65" selection-start-line="130" selection-start-column="45" selection-end-line="130" selection-end-column="65" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/styled.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/files.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="52" lean-forward="true" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="770">
-              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
-              <folding>
-                <element signature="e#0#49#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="425">
+              <caret line="25" column="30" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -125,20 +77,15 @@
         <option value="$PROJECT_DIR$/src/utils/buildFileStructureFromFilesList.js" />
         <option value="$PROJECT_DIR$/src/contexts/InfoTooltipService.js" />
         <option value="$PROJECT_DIR$/src/contexts/InfoTooltipServiceContext.js" />
-        <option value="$PROJECT_DIR$/src/components/Login/Login.js" />
-        <option value="$PROJECT_DIR$/src/components/Register/Register.js" />
-        <option value="$PROJECT_DIR$/src/components/FilesSendSection/styled.js" />
         <option value="$PROJECT_DIR$/src/components/Header/styled.js" />
         <option value="$PROJECT_DIR$/src/contexts/UserDataContext.js" />
         <option value="$PROJECT_DIR$/src/api/auth.js" />
         <option value="$PROJECT_DIR$/src/components/common/InfoTooltip.js" />
         <option value="$PROJECT_DIR$/src/components/ProcessingStatusBadge/ProcessingStatusBadge.js" />
         <option value="$PROJECT_DIR$/src/index.css" />
-        <option value="$PROJECT_DIR$/src/components/commonStyled/SectionTitle.js" />
         <option value="$PROJECT_DIR$/src/components/FilesZone/FilesCatcher/FilesCatcher.jsx" />
         <option value="$PROJECT_DIR$/src/components/Main/styled.js" />
         <option value="$PROJECT_DIR$/src/contexts/NotificationServiceContext.js" />
-        <option value="$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/common/services/NotificationsService.js" />
         <option value="$PROJECT_DIR$/src/components/commonStyled/Page.js" />
@@ -163,6 +110,11 @@
         <option value="$PROJECT_DIR$/src/components/ProcessingSummarySection/ProcessingSummarySection.js" />
         <option value="$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js" />
         <option value="$PROJECT_DIR$/src/api/files.js" />
+        <option value="$PROJECT_DIR$/src/components/Login/Login.js" />
+        <option value="$PROJECT_DIR$/src/components/Register/Register.js" />
+        <option value="$PROJECT_DIR$/src/components/commonStyled/SectionTitle.js" />
+        <option value="$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js" />
+        <option value="$PROJECT_DIR$/src/components/FilesSendSection/styled.js" />
       </list>
     </option>
   </component>
@@ -201,13 +153,6 @@
               <item name="cp-summer-ekb-2023" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cp-summer-ekb-2023" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cp-summer-ekb-2023" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="FilesSendSection" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cp-summer-ekb-2023" type="b2602c69:ProjectViewProjectNode" />
@@ -275,7 +220,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93944000" />
+    <option name="totallyTimeSpent" value="98530000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -328,16 +273,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../chora/src/components/TransactionWizard/TransactionSummary.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="48" column="24" lean-forward="true" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../chora/src/components/TransactionWizard/TransactionWizard.tsx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/../chora/src/components/TransactionWizard/FinalDialog.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -349,30 +284,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="38" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Register/Register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="36" column="28" lean-forward="true" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FilesSendSection/styled.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="69" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Login/Login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -418,13 +329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/commonStyled/SectionTitle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -664,13 +568,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/styled.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/FilesHistory/styled.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -678,32 +575,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js">
+    <entry file="file://$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="98" column="50" lean-forward="true" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="50" />
+        <state relative-caret-position="187">
+          <caret line="116" column="16" lean-forward="true" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
           <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/SummaryAccordion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="130" column="65" selection-start-line="130" selection-start-column="45" selection-end-line="130" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -718,6 +595,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/SummaryAccordion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="130" column="65" selection-start-line="130" selection-start-column="45" selection-end-line="130" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ProcessingSummarySection/SummaryAccordion/styled.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/files.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -725,13 +619,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FilesHistory/FilesHistory.js">
+    <entry file="file://$PROJECT_DIR$/src/components/FilesZone/FilesView/File/File.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="116" column="16" lean-forward="true" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
+        <state relative-caret-position="770">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#49#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/commonStyled/AuthForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Login/styled.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/commonStyled/SectionTitle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Register/Register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="88" column="27" lean-forward="true" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Login/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="58" column="23" lean-forward="true" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FilesSendSection/FilesSendSection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="147" column="56" lean-forward="true" selection-start-line="147" selection-start-column="56" selection-end-line="147" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+            <element signature="e#4230#5550#0" />
+            <element signature="e#5568#9033#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FilesSendSection/styled.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="30" />
         </state>
       </provider>
     </entry>

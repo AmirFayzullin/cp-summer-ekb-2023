@@ -7,6 +7,7 @@ import {RegisterWrapper} from "./styled";
 import {register} from "../../api/auth";
 import {Loader} from "../common/Loader";
 import {InfoTooltipServiceContext} from "../../contexts/InfoTooltipServiceContext";
+import {Logo} from "../common/Logo";
 
 export const Register = ({handleLogin}) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -59,6 +60,7 @@ export const Register = ({handleLogin}) => {
     return (
         <RegisterWrapper>
             <AuthForm onSubmit={handleSignUp}>
+                <Logo fontSize={35}/>
                 <FormTitle>
                     Sign up
                 </FormTitle>

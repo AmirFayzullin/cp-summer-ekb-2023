@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import {login} from "../../api/auth";
 import {Loader} from "../common/Loader";
 import {InfoTooltipServiceContext} from "../../contexts/InfoTooltipServiceContext";
+import {Logo} from "../common/Logo";
 
 
 export const Login = ({handleLogin}) => {
@@ -53,6 +54,7 @@ export const Login = ({handleLogin}) => {
     return (
         <LoginWrapper>
             <AuthForm onSubmit={handleSignIn}>
+                <Logo fontSize={35}/>
                 <FormTitle>
                     Sign in
                 </FormTitle>
